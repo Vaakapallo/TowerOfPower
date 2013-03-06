@@ -52,8 +52,17 @@ public class Character {
      * @return Remaining hitpoints on character.
      */
     public int takeDamage(int damage) {
-        int damageminusArmor = Math.max(0, damage - stats.getArmor().getProtectionValue());
-        stats.adjustCurrentHitPoints(-damageminusArmor);
+        stats.adjustCurrentHitPoints(-calculateDamage(damage));
         return stats.getCurrentHitPoints();
+    }
+
+    /**
+     * Adjusts the damage based on the characters armor.
+     *
+     * @param damage original damage
+     * @return reduced damage, but never less than zero
+     */
+    private int calculateDamage(int damage) {
+        return Math.max(0, damage - stats.getArmor().getProtectionValue());
     }
 }
