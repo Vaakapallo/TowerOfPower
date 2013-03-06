@@ -58,6 +58,10 @@ public class Inventory {
             for (Item item : items) {
                 itemStrings += item.toString() + "\n";
             }
+            /**
+             * Cut off the last newline
+             */
+            itemStrings = itemStrings.substring(0, itemStrings.length()-1);
         } else {
             itemStrings = "Inventory is empty.";
         }
