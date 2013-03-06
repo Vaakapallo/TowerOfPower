@@ -44,4 +44,16 @@ public class Character {
         stats.setArmor(armor);
         return lastArmor;
     }
+
+    /**
+     * Makes the character take damage.
+     *
+     * @param damage
+     * @return Remaining hitpoints on character.
+     */
+    public int takeDamage(int damage) {
+        int damageminusArmor = Math.max(0, damage - stats.getArmor().getProtectionValue());
+        stats.adjustCurrentHitPoints(-damageminusArmor);
+        return stats.getCurrentHitPoints();
+    }
 }

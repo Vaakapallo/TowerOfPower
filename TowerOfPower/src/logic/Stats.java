@@ -64,8 +64,8 @@ public class Stats {
         return currentHitPoints;
     }
 
-    public void setCurrentHitPoints(int currentHitPoints) {
-        this.currentHitPoints = currentHitPoints;
+    public void adjustCurrentHitPoints(int amount) {
+        this.currentHitPoints += amount;
     }
 
     public int getMaxMana() {

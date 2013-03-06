@@ -18,4 +18,12 @@ public class Armor extends Item {
         this.protectionValue = protectionValue;
         this.dodgeValue = dodgeValue;
     }
+
+    public int getProtectionValue() {
+        return protectionValue;
+    }
+
+    public int getDodgeValue() {
+        return dodgeValue;
+    }
 }
