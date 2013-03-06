@@ -8,7 +8,7 @@ package logic;
  *
  * @author lassi
  */
-public enum Class {
+public enum Race {
 
-    FIGHTER, BOWMAN, CHARMEO
+    Fighter, Bowman
 }
