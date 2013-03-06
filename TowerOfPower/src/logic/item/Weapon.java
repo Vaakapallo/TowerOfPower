@@ -13,10 +13,17 @@ public class Weapon extends Item {
     private int minDamage;
     private int maxDamage;
 
-    public Weapon(int minDamage, int maxDamage, String name) {
+    /**
+     * The Constructor makes sure that minDamage is lower than maxDamage.
+     * 
+     * @param minDamage
+     * @param maxDamage
+     * @param name 
+     */
+    public Weapon(String name, int minDamage, int maxDamage) {
         super(name);
-        this.minDamage = minDamage;
-        this.maxDamage = maxDamage;
+        this.minDamage = Math.min(minDamage, maxDamage);
+        this.maxDamage = Math.max(minDamage, maxDamage);
     }
 
     public int getMinDamage() {
@@ -29,6 +36,6 @@ public class Weapon extends Item {
 
     @Override
     public String toString() {
-        return super.toString() + "( " + minDamage + "-" + maxDamage + ")";
+        return super.toString() + " (Damage: " + minDamage + "-" + maxDamage + ")";
     }
 }

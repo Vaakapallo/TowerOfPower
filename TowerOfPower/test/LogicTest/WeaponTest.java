@@ -6,6 +6,7 @@ package LogicTest;
 
 import logic.item.Item;
 import logic.item.RangedWeapon;
+import logic.item.Weapon;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,7 +26,20 @@ public class WeaponTest {
 
     @Test
     public void rangedWeaponConstructorWorks() {
-        Item crossbow = new RangedWeapon(3, 5, 8, "Awesomebow of Grilling");
+        Item crossbow = new RangedWeapon("Awesomebow of Grilling", 2, 5, 3);
         assertEquals("Awesomebow of Grilling", crossbow.getName());
+    }
+
+    @Test
+    public void weaponToStringPrintsRight() {
+        Item axe = new Weapon("Supersledge of Crushing", 5, 8);
+        assertEquals("Supersledge of Crushing (Damage: 5-8)", axe.toString());
+    }
+
+    @Test
+    public void weaponConstructorDoesntCareAboutTheOrderOfMinAndMax() {
+        Item axe = new Weapon("Supersledge of Crushing", 5, 8);
+        Item hammer = new Weapon("Supersledge of Crushing", 8, 5);
+        assertEquals(axe.toString(), hammer.toString());
     }
 }

@@ -12,8 +12,8 @@ public class RangedWeapon extends Weapon {
 
     private int range;
 
-    public RangedWeapon(int range, int minDamage, int maxDamage, String name) {
-        super(minDamage, maxDamage, name);
+    public RangedWeapon(String name, int minDamage, int maxDamage, int range) {
+        super(name, minDamage, maxDamage);
         this.range = range;
     }
 }
