@@ -10,4 +10,7 @@ package graphics;
  */
 public class Grid {
     
+    private Square[][] grid;
+
+    
 }

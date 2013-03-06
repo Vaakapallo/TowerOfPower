@@ -46,9 +46,6 @@ public class InventoryTest {
     @After
     public void tearDown() {
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
 
     private Inventory addStuff() {
         Inventory i = new Inventory();
