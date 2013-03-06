@@ -26,7 +26,7 @@ public class WeaponTest {
 
     @Test
     public void rangedWeaponConstructorWorks() {
-        Item crossbow = new RangedWeapon("Awesomebow of Grilling", 2, 5, 3);
+        Item crossbow = new RangedWeapon("Awesomebow of Grilling", 2, 5, 3, 10);
         assertEquals("Awesomebow of Grilling", crossbow.getName());
     }
 

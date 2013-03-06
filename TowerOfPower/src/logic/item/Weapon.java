@@ -15,10 +15,10 @@ public class Weapon extends Item {
 
     /**
      * The Constructor makes sure that minDamage is lower than maxDamage.
-     * 
+     *
      * @param minDamage
      * @param maxDamage
-     * @param name 
+     * @param name
      */
     public Weapon(String name, int minDamage, int maxDamage) {
         super(name);

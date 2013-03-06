@@ -8,11 +8,6 @@ package logic;
  *
  * @author lassi
  */
-public class Character {
-    
-    private int HitPoints;
-    private int mana;
-    private Weapon weapon;
-    
+public enum Class {
     
 }
