@@ -5,7 +5,6 @@
 package logic;
 
 import logic.item.Armor;
-import logic.item.Item;
 import logic.item.Weapon;
 
 /**

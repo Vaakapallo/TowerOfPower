@@ -4,13 +4,11 @@
  */
 package logic.item;
 
-import logic.item.Item;
-
 /**
  *
  * @author lassi
  */
-class Armor extends Item {
+public class Armor extends Item {
 
     private int protectionValue;
     private int dodgeValue;
