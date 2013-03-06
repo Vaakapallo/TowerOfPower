@@ -21,7 +21,8 @@ public class RangedWeapon extends Weapon {
         currentAmmo = maxAmmo;
     }
 
-    public void shoot() {
+    @Override
+    public void attack() {
         currentAmmo--;
     }
 

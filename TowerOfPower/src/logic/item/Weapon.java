@@ -33,6 +33,10 @@ public class Weapon extends Item {
     public int getMaxDamage() {
         return maxDamage;
     }
+    
+    public void attack(){
+        
+    }
 
     @Override
     public String toString() {

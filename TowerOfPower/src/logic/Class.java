@@ -9,5 +9,6 @@ package logic;
  * @author lassi
  */
 public enum Class {
-    
+
+    FIGHTER, BOWMAN, CHARMEO
 }
