@@ -57,17 +57,6 @@ public class Grid {
         return grid[x][y];
     }
 
-    @Override
-    public String toString() {
-        String returnString = "";
-        for (GridCell[] gridCells : grid) {
-            for (GridCell gridCell : gridCells) {
-                returnString += gridCell.toString();
-            }
-        }
-        return returnString;
-    }
-
     /**
      * Adjusts each grid cell so that none of grid's y locations are negative
      */
@@ -190,5 +179,21 @@ public class Grid {
         }
         Collections.sort(cells);
         return cells;
+    }
+
+    /**
+     * Mostly (solely) for testing purposes
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        String returnString = "";
+        for (GridCell[] gridCells : grid) {
+            for (GridCell gridCell : gridCells) {
+                returnString += gridCell.toString();
+            }
+        }
+        return returnString;
     }
 }
