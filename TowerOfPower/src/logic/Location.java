@@ -36,6 +36,11 @@ public class Location {
 
     public void setY(int y) {
         this.y = y;
+    }   
+    
+    public void setXY(int x, int y) {
+        this.y = y;
+        this.x = x;
     }
 
     @Override

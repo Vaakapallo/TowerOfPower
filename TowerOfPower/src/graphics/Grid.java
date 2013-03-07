@@ -17,6 +17,7 @@ public class Grid {
     public Grid(int x, int y) {
         this.grid = new GridCell[x][y];
         assignLocations();
+        normalizeCoordinates();
     }
     
     /**
@@ -41,8 +42,14 @@ public class Grid {
         this.ySize = y;
     }
     
-    public void getCoordinate(int x, int y) {
-        
+    /**
+     * Returns the grid cell at given array coordinate
+     * 
+     * @param x
+     * @param y 
+     */
+    public GridCell getCellAt(int x, int y) {
+        return grid[x][y];
     }
 
     @Override
@@ -50,10 +57,53 @@ public class Grid {
         String returnString = "";
         for (GridCell[] gridCells : grid) {
             for (GridCell gridCell : gridCells) {
-                returnString += gridCell.toString() + "\n";
+                returnString += gridCell.toString();
             }
         }
         return returnString;
     }
+
+    /**
+     * Adjusts each grid cell so that none of grid's y locations are negative
+     */
+    private void normalizeCoordinates() {
+        int offsetAmount = grid.length-1;
+        for (GridCell[] gridCells : grid) {
+            for (GridCell gridCell : gridCells) {
+                gridCell.move(0, offsetAmount);
+            }
+        }
+    }
     
+    public void fitToWidth(int width) {
+        int xRightmost =
+                grid[grid.length-1][grid[0].length-1].getX();
+        int newXRightmost = 0;
+        int i = 1;
+        while(newXRightmost <= width) {
+            i+=2;
+            newXRightmost = xRightmost * i;
+        }
+        zoomGrid(i-1);
+    }
+    
+    public void fitToHeight(int height) {
+        
+    }
+    
+    public void fitToSize(int width, int height) {
+        
+    }
+
+    private void zoomGrid(int i) {
+        int x;
+        int y;
+        for (GridCell[] gridCells : grid) {
+            for (GridCell gridCell : gridCells) {
+                x = gridCell.getX();
+                y = gridCell.getY();
+                gridCell.setXY(x*i, y*i);
+            }
+        }
+    }
 }
