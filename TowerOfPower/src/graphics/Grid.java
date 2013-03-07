@@ -4,6 +4,10 @@
  */
 package graphics;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 /**
  *
  * @author 41407
@@ -22,7 +26,7 @@ public class Grid {
 
     /**
      * Assign the locations of individual grid cells for isometric configuration
-     * 
+     *
      * See documentation for details
      */
     private void assignLocations() {
@@ -172,5 +176,19 @@ public class Grid {
                 gridCell.setXY(x * i, y * i);
             }
         }
+    }
+
+    /**
+     * Returns cells by their z index, in descending order.
+     *
+     * @return Sorted arrayList of cells.
+     */
+    public ArrayList<GridCell> getCells() {
+        ArrayList<GridCell> cells = new ArrayList();
+        for (GridCell[] gridCells : grid) {
+            cells.addAll(Arrays.asList(gridCells));
+        }
+        Collections.sort(cells);
+        return cells;
     }
 }

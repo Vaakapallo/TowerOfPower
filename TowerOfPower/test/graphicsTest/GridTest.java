@@ -5,10 +5,8 @@
 package graphicsTest;
 
 import graphics.Grid;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import graphics.GridCell;
+import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,22 +17,6 @@ import static org.junit.Assert.*;
 public class GridTest {
 
     public GridTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
     }
 
     @Test
@@ -74,5 +56,18 @@ public class GridTest {
         g.fitToSize(12800, 60);
         assertEquals("(0, 36)(24, 48)(48, 60)(24, 24)(48, 36)(72, 48)(48, 12)"
                 + "(72, 24)(96, 36)(72, 0)(96, 12)(120, 24)", g.toString());
+    }
+
+    @Test
+    public void gridReturnsSortedArrayList() {
+        Grid g = new Grid(4, 3);
+        ArrayList<GridCell> a = g.getCells();
+        String s = "";
+        for (GridCell gridCell : a) {
+            s += gridCell.toString();
+        }
+        assertEquals("(6, 0)(4, 1)(8, 1)(2, 2)(6, 2)(10, 2)(0, 3)(4, 3)(8, 3)"
+                + "(2, 4)(6, 4)(4, 5)", s);
+        
     }
 }
