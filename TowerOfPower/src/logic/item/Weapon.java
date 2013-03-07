@@ -15,6 +15,8 @@ public class Weapon extends Item {
 
     /**
      * The Constructor makes sure that minDamage is lower than maxDamage.
+     * 
+     * Also that maxDamage is larger than minDamage.
      *
      * @param minDamage
      * @param maxDamage

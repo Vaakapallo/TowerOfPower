@@ -10,8 +10,17 @@ package logic.item;
  */
 public class RangedWeapon extends Weapon {
 
+    /**
+     * How far can you shoot with this thing.
+     */
     private int range;
+    /**
+     * Max ammo possible in the gun.
+     */
     private int maxAmmo;
+    /**
+     * How many rounds left in the gun.
+     */
     private int currentAmmo;
 
     public RangedWeapon(String name, int minDamage, int maxDamage, int range, int maxAmmo) {
@@ -21,11 +30,17 @@ public class RangedWeapon extends Weapon {
         currentAmmo = maxAmmo;
     }
 
+    /**
+     * AKA Shoot. Reduces current ammo by one.
+     */
     @Override
     public void attack() {
         currentAmmo--;
     }
 
+    /**
+     * Adjusts current ammo back to maximum ammunition.
+     */
     public void reload() {
         currentAmmo = maxAmmo;
     }

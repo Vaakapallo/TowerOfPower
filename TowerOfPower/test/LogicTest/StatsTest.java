@@ -25,7 +25,7 @@ public class StatsTest {
 
     @Test
     public void statsToStringPrintsTheNameRight() {
-        Stats stats = new Stats("John", 3, 4, null, null, Race.Fighter);
+        Stats stats = new Stats("John", 3, 4, Race.Fighter);
         assertEquals("John the Fighter", stats.toString());
     }
 }

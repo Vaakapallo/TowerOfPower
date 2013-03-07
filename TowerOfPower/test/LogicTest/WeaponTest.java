@@ -42,4 +42,10 @@ public class WeaponTest {
         Item hammer = new Weapon("Supersledge of Crushing", 8, 5);
         assertEquals(axe.toString(), hammer.toString());
     }
+
+    @Test
+    public void rangedWeaponsUseWeaponToStringProperly() {
+        Item crossbow = new RangedWeapon("Awesomebow of Grilling", 2, 5, 3, 10);
+        assertEquals("Awesomebow of Grilling (Damage: 2-5)", crossbow.toString());
+    }
 }

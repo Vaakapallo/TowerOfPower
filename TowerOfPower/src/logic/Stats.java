@@ -33,7 +33,7 @@ public class Stats {
         this.currentMana = maxMana;
     }
 
-    Stats(String name, int maxHitPoints, int maxMana, Race race) {
+    public Stats(String name, int maxHitPoints, int maxMana, Race race) {
         this.name = name;
         this.maxHitPoints = maxHitPoints;
         this.maxMana = maxMana;

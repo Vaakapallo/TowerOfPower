@@ -5,7 +5,8 @@
 package logic;
 
 /**
- *
+ * The Race (or class) of a character.
+ * 
  * @author lassi
  */
 public enum Race {
