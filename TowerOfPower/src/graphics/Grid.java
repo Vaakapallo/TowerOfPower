@@ -22,6 +22,8 @@ public class Grid {
 
     /**
      * Assign the locations of individual grid cells for isometric configuration
+     * 
+     * See documentation for details
      */
     private void assignLocations() {
         int xAdd;
@@ -136,11 +138,11 @@ public class Grid {
     /**
      * Finds out how many times a can be multiplied so that a is less than or
      * equal to b.
-     * 
+     *
      * In other words, finds i for
-     * 
-     *   a * i ≤ b
-     * 
+     *
+     * a * i ≤ b
+     *
      * @param a
      * @param b
      * @return s
@@ -157,8 +159,8 @@ public class Grid {
 
     /**
      * Multiplies each gridCell's location value by parameter i
-     * 
-     * @param i 
+     *
+     * @param i
      */
     private void zoomGrid(int i) {
         int x;
