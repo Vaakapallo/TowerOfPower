@@ -26,7 +26,7 @@ public class TowerOfPower {
         }
 
         
-        Level a = new Level(12, 7);
+        Level a = new Level(16, 14);
         a.getGrid().setCellSize(50);
         
         a.getGrid().getCellAt(3, 3).setVisibility(false);

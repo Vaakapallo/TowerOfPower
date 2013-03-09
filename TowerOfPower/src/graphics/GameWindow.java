@@ -4,9 +4,7 @@
  */
 package graphics;
 
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,11 +16,11 @@ public class GameWindow extends JFrame {
 
     JPanel p;
 
-    public GameWindow(JPanel p) throws HeadlessException {
+    public GameWindow(JPanel p){
         this.p = p;
         this.setTitle("HELLO WINDOW");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800, 600);
+        this.setSize(860, 600);
         addContent(this.getContentPane());
         this.setVisible(true);
     }

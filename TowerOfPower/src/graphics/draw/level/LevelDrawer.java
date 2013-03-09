@@ -26,9 +26,12 @@ public class LevelDrawer {
     String defaultPath = "resources/level/";
 
     public void drawLevel(Level l, Graphics g) {
-///        drawBackgroundTopHalf(g);
-        drawGrid(l.getGrid(), g);
- //       drawBackgroundBottomHalf(g);
+        
+        int yMargin = 108;
+        int xMargin = 42;
+//        drawBackgroundTopHalf(g);
+        drawGrid(l.getGrid(), g, xMargin, yMargin);
+        //       drawBackgroundBottomHalf(g);
     }
 
     /**
@@ -37,13 +40,13 @@ public class LevelDrawer {
      * @param grid
      * @param g Graphics
      */
-    void drawGrid(Grid grid, Graphics g) {
+    void drawGrid(Grid grid, Graphics g, int xMargin, int yMargin) {
         String path = defaultPath + "grid/50x25/";
         ArrayList<Cell> orderedCells = grid.getCells();
 
         for (Cell c : orderedCells) {
             if (c.isVisible()) {
-                drawCell(g, c, path);
+                drawCell(g, c, xMargin, yMargin, path);
             }
         }
     }
@@ -68,8 +71,8 @@ public class LevelDrawer {
      * @param c Cell
      * @param path Path to the target file.
      */
-    private void drawCell(Graphics g, Cell c, String path) {
-        drawCellTile(g, c, path);
+    private void drawCell(Graphics g, Cell c, int xMargin, int yMargin, String path) {
+        drawCellTile(g, c, xMargin, yMargin, path);
 
 //        drawCellContents(g, c);
     }
@@ -81,20 +84,26 @@ public class LevelDrawer {
      * @param c cell
      * @param path path to the folder of the image
      */
-    private void drawCellTile(Graphics g, Cell c, String path) {
+    private void drawCellTile(Graphics g, Cell c, int xMargin, int yMargin,
+            String path) {
         /**
          * Destination coordinates A.K.A. where the image will be drawn
          *
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-        int dstx1, dsty1, dstx2, dsty2, width = 50, height = 25;
-        dstx1 = c.getX();
-        dsty1 = c.getY();
-        dstx2 = dstx1 + width;
-        dsty2 = dsty1 + height;
-
-        g.drawImage(getImage(path + "00"),
+        int dstx1 = c.getX() + xMargin;
+        int dsty1 = c.getY() + yMargin;
+        
+        Image i = getImage(path+"00");
+        
+        int width = i.getWidth(null);
+        int height = i.getHeight(null);
+        
+        int dstx2 = dstx1 + width;
+        int dsty2 = dsty1 + height;
+        
+        g.drawImage(i,
                 dstx1, dsty1,
                 dstx2, dsty2,
                 0, 0,

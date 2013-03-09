@@ -31,6 +31,6 @@ public class LevelPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(new Color(0,0,0));
-        d.drawGrid(l.getGrid(), g);
+        d.drawLevel(l, g);
     }
 }
