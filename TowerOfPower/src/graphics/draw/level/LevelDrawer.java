@@ -30,14 +30,17 @@ public class LevelDrawer {
 
     public void drawLevel(Level l, Graphics g) {
 
-        this.yMargin = l.getxMargin();
-        this.xMargin = l.getyMargin();
+        this.xMargin = l.getxMargin();
+        this.yMargin = l.getyMargin()+l.getGrid().getCellAt(0, 0).getHeight();
         l.getGrid().moveGrid(xMargin, yMargin);
         drawBackgroundTopHalf(g, l);
 
         drawGrid(l.getGrid(), g);
         drawCellContents(l.getGrid(), g);
-        //       drawBackgroundBottomHalf(g);
+        drawBackgroundBottomHalf(g, l);
+        
+        g.drawLine(xMargin, 0, xMargin, 12309);
+        g.drawLine(0, yMargin, 143241, yMargin);
     }
 
     /**
@@ -47,7 +50,7 @@ public class LevelDrawer {
      * @param g Graphics
      */
     void drawGrid(Grid grid, Graphics g) {
-        String path = defaultPath + "grid/50/";
+        String path = defaultPath + "grid/54/";
         ArrayList<Cell> orderedCells = grid.getCells();
 
         for (Cell c : orderedCells) {
@@ -97,8 +100,8 @@ public class LevelDrawer {
          */
         Random random = new Random();
 
-        Image i = getImage(path + "0" + random.nextInt(1));
-        drawImage(g, i, c.getX(), c.getY() - c.getHeight(),
+        Image i = getImage(path + "0" + random.nextInt(4));
+        drawImage(g, i, c.getX(), c.getY() - c.getHeight()-random.nextInt(3)+2,
                 i.getWidth(null), i.getHeight(null));
     }
 
@@ -125,13 +128,16 @@ public class LevelDrawer {
 
     }
 
-    private void drawBackgroundBottomHalf(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private void drawBackgroundBottomHalf(Graphics g, Level l) {
+        String path = defaultPath + "background/";
+        path += l.getBackgroundImage() + "bottom";
+        Image i = getImage(path);
+        drawImage(g, i, 0, 0, i.getWidth(null), i.getWidth(null));
     }
 
     private void drawBackgroundTopHalf(Graphics g, Level l) {
         String path = defaultPath + "background/";
-        path += l.getBackgroundImage();
+        path += l.getBackgroundImage() + "top";
         Image i = getImage(path);
         drawImage(g, i, 0, 0, i.getWidth(null), i.getWidth(null));
     }

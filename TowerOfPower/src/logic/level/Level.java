@@ -25,9 +25,9 @@ public class Level {
     
     public Level(int x, int y) {
         this.grid = new Grid(x, y);
-        this.xMargin = 208;
-        this.yMargin = 104;
-        this.backgroundImage = "bg00top";
+        this.xMargin = 156;
+        this.yMargin = 222;
+        this.backgroundImage = "bg00";
     }
 
     public int getxMargin() {

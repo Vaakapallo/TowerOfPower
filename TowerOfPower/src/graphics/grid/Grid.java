@@ -136,14 +136,10 @@ public class Grid {
      * @param width Desired cell width
      */
     public void setCellSize(int width) {
-        width /= 4;
-        if (width % 2 == 1) {
-            width++;
-        }
         if (width < 1) {
             return;
         }
-        zoomGrid(width);
+        zoomGrid(width/4);
     }
 
     /**
