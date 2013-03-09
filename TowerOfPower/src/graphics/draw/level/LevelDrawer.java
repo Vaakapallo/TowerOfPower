@@ -15,11 +15,8 @@ import logic.level.Level;
  * @author 41407
  */
 public class LevelDrawer {
-    
-    
-    
+
     public void drawLevel(Level level, Graphics g) {
-        
     }
 
     void drawGrid(Grid grid, Graphics graphics) {

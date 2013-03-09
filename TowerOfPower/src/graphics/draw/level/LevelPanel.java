@@ -19,8 +19,13 @@ public class LevelPanel extends JPanel {
     private Level l;
 
     public LevelPanel(Level level) {
+        super.setBackground(Color.white);
         this.d = new LevelDrawer();
         this.l = level;
+    }
+
+    public void setL(Level l) {
+        this.l = l;
     }
 
     @Override
