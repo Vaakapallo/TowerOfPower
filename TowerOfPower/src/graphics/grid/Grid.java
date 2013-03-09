@@ -116,7 +116,6 @@ public class Grid {
      * @param height Desired maximum height of the grid.
      */
     public void fitToSize(int width, int height) {
-        assignLocations();
         int xRightmost =
                 grid[grid.length - 1][grid[0].length - 1].getX();
         int yBottom =
@@ -131,20 +130,19 @@ public class Grid {
 
     /**
      * Resizes the cells to be certain size, disregarding any size constraints.
-     * 
+     *
      * If width is an odd number, it will be scaled to the next even number.
      *
      * @param width Desired cell width
      */
     public void setCellSize(int width) {
-        width/=4;
-        if(width % 2 == 1) {
+        width /= 4;
+        if (width % 2 == 1) {
             width++;
         }
-        if(width < 1) {
+        if (width < 1) {
             return;
         }
-        assignLocations();
         zoomGrid(width);
     }
 
@@ -176,6 +174,7 @@ public class Grid {
      * @param i
      */
     private void zoomGrid(int i) {
+        assignLocations();
         int x;
         int y;
         for (Cell[] gridCells : grid) {
@@ -183,6 +182,7 @@ public class Grid {
                 x = gridCell.getX();
                 y = gridCell.getY();
                 gridCell.setXY(x * i, y * i);
+                gridCell.setHeight(i);
             }
         }
     }
@@ -206,8 +206,7 @@ public class Grid {
      *
      * @param x
      * @param y
-     * @return Cell at parameter coordinate, or null if coordinate out of
-     * bounds
+     * @return Cell at parameter coordinate, or null if coordinate out of bounds
      */
     public Cell getCell(int x, int y) {
         if (x < grid.length && y < grid[0].length) {
@@ -219,18 +218,18 @@ public class Grid {
 
     /**
      * Moves the grid as defined by parameter dx, dy
-     * 
-     * @param dx 
-     * @param dy 
+     *
+     * @param dx
+     * @param dy
      */
-    public void moveGrid(int dx, int dy){
+    public void moveGrid(int dx, int dy) {
         for (Cell[] cells : grid) {
             for (Cell cell : cells) {
                 cell.move(dx, dy);
             }
         }
     }
-    
+
     /**
      * Mostly (solely) for testing purposes
      *

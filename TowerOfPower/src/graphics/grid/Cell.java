@@ -16,6 +16,7 @@ public class Cell extends Location implements Comparable<Cell> {
     private boolean visible;
     private boolean accessible;
     private CellContent content;
+    private int height;
 
     public Cell(int x, int y) {
         super(x, y);
@@ -44,5 +45,14 @@ public class Cell extends Location implements Comparable<Cell> {
 
     public CellContent getContent() {
         return content;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

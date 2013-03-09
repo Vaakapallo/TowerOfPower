@@ -9,7 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- *
+ * Opens a new game window with specified JPanel.
+ * 
  * @author 41407
  */
 public class GameWindow extends JFrame {

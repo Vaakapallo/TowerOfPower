@@ -38,7 +38,11 @@ public class TowerOfPower {
         
         Champion c = new Champion("Pekka", 30, 20, Race.Fighter);
         
+        Champion d = new Champion("Makkonen", 1, 800, Race.Bowman);
+        a.getGrid().getCellAt(15,0).setContent(d);
+        
         a.getGrid().getCellAt(10,4).setContent(c);
+        a.getGrid().getCellAt(3,8).setContent(d);
         LevelPanel l = new LevelPanel(a);
         GameWindow window = new GameWindow(l);
     }

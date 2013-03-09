@@ -72,6 +72,8 @@ public class Champion extends CellContent {
         String path = "character/";
         if(this.stats.getRace() == Race.Fighter) {
             super.setPath(path+"fighter");
+        } else if (this.stats.getRace() == Race.Bowman) {
+            super.setPath(path+"bowman");
         }
     }
 }
