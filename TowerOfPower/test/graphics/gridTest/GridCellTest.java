@@ -4,7 +4,7 @@
  */
 package graphics.gridTest;
 
-import graphics.grid.GridCell;
+import graphics.grid.Cell;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,9 +19,9 @@ public class GridCellTest {
 
     @Test
     public void GridCellComparesRight() {
-        GridCell a = new GridCell(10, 50);
-        GridCell b = new GridCell(15, 100);
-        GridCell c = new GridCell(20, 100);
+        Cell a = new Cell(10, 50);
+        Cell b = new Cell(15, 100);
+        Cell c = new Cell(20, 100);
         assertTrue("A should be less than B", a.compareTo(b) < 0);
         assertTrue("B should be more than A", b.compareTo(a) > 0);
         assertTrue("B should be equal to C", b.compareTo(c) == 0);

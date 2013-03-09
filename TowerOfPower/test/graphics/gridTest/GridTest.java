@@ -5,7 +5,7 @@
 package graphics.gridTest;
 
 import graphics.grid.Grid;
-import graphics.grid.GridCell;
+import graphics.grid.Cell;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -61,9 +61,9 @@ public class GridTest {
     @Test
     public void gridReturnsSortedArrayList() {
         Grid g = new Grid(4, 3);
-        ArrayList<GridCell> a = g.getCells();
+        ArrayList<Cell> a = g.getCells();
         String s = "";
-        for (GridCell gridCell : a) {
+        for (Cell gridCell : a) {
             s += gridCell.toString();
         }
         assertEquals("(6, 0)(4, 1)(8, 1)(2, 2)(6, 2)(10, 2)(0, 3)(4, 3)(8, 3)"

@@ -14,12 +14,12 @@ import java.util.Collections;
  */
 public class Grid {
 
-    private GridCell[][] grid;
+    private Cell[][] grid;
     private int xSize;
     private int ySize;
 
     public Grid(int x, int y) {
-        this.grid = new GridCell[x][y];
+        this.grid = new Cell[x][y];
         assignLocations();
     }
 
@@ -35,7 +35,7 @@ public class Grid {
             xAdd = 2 * x;
             yAdd = -x;
             for (int y = 0; y < grid[0].length; y++) {
-                grid[x][y] = new GridCell(xAdd, y + yAdd);
+                grid[x][y] = new Cell(xAdd, y + yAdd);
                 xAdd += 2;
             }
         }
@@ -53,7 +53,7 @@ public class Grid {
      * @param x
      * @param y
      */
-    public GridCell getCellAt(int x, int y) {
+    public Cell getCellAt(int x, int y) {
         return grid[x][y];
     }
 
@@ -62,8 +62,8 @@ public class Grid {
      */
     private void normalizeCoordinates() {
         int offsetAmount = grid.length - 1;
-        for (GridCell[] gridCells : grid) {
-            for (GridCell gridCell : gridCells) {
+        for (Cell[] gridCells : grid) {
+            for (Cell gridCell : gridCells) {
                 gridCell.move(0, offsetAmount);
             }
         }
@@ -178,8 +178,8 @@ public class Grid {
     private void zoomGrid(int i) {
         int x;
         int y;
-        for (GridCell[] gridCells : grid) {
-            for (GridCell gridCell : gridCells) {
+        for (Cell[] gridCells : grid) {
+            for (Cell gridCell : gridCells) {
                 x = gridCell.getX();
                 y = gridCell.getY();
                 gridCell.setXY(x * i, y * i);
@@ -192,9 +192,9 @@ public class Grid {
      *
      * @return Sorted arrayList of cells.
      */
-    public ArrayList<GridCell> getCells() {
-        ArrayList<GridCell> cells = new ArrayList();
-        for (GridCell[] gridCells : grid) {
+    public ArrayList<Cell> getCells() {
+        ArrayList<Cell> cells = new ArrayList();
+        for (Cell[] gridCells : grid) {
             cells.addAll(Arrays.asList(gridCells));
         }
         Collections.sort(cells);
@@ -202,14 +202,14 @@ public class Grid {
     }
 
     /**
-     * Returns the GridCell at given coordinates.
+     * Returns the Cell at given coordinates.
      *
      * @param x
      * @param y
-     * @return GridCell at parameter coordinate, or null if coordinate out of
+     * @return Cell at parameter coordinate, or null if coordinate out of
      * bounds
      */
-    public GridCell getCell(int x, int y) {
+    public Cell getCell(int x, int y) {
         if (x < grid.length && y < grid[0].length) {
             return grid[x][y];
         } else {
@@ -225,8 +225,8 @@ public class Grid {
     @Override
     public String toString() {
         String returnString = "";
-        for (GridCell[] gridCells : grid) {
-            for (GridCell gridCell : gridCells) {
+        for (Cell[] gridCells : grid) {
+            for (Cell gridCell : gridCells) {
                 returnString += gridCell.toString();
             }
         }

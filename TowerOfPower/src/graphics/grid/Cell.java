@@ -11,11 +11,11 @@ import logic.level.CellProperty;
  *
  * @author 41407
  */
-public class GridCell extends Location implements Comparable<GridCell> {
+public class Cell extends Location implements Comparable<Cell> {
 
     private boolean visible;
 
-    public GridCell(int x, int y) {
+    public Cell(int x, int y) {
         super(x, y);
         this.visible = true;
     }
@@ -29,7 +29,7 @@ public class GridCell extends Location implements Comparable<GridCell> {
     }
 
     @Override
-    public int compareTo(GridCell cell) {
+    public int compareTo(Cell cell) {
         return this.getY() - cell.getY();
     }
 }

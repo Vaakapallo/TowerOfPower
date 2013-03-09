@@ -25,8 +25,15 @@ public class TowerOfPower {
             System.out.println(WeaponNameGenerator.generateRangedWeaponName());
         }
 
+        
         Level a = new Level(12, 7);
         a.getGrid().setCellSize(50);
+        
+        a.getGrid().getCellAt(3, 3).setVisibility(false);
+        a.getGrid().getCellAt(4, 3).setVisibility(false);
+        a.getGrid().getCellAt(3, 4).setVisibility(false);
+        a.getGrid().getCellAt(4, 4).setVisibility(false);
+        
         LevelPanel l = new LevelPanel(a);
         GameWindow window = new GameWindow(l);
     }
