@@ -218,6 +218,20 @@ public class Grid {
     }
 
     /**
+     * Moves the grid as defined by parameter dx, dy
+     * 
+     * @param dx 
+     * @param dy 
+     */
+    public void moveGrid(int dx, int dy){
+        for (Cell[] cells : grid) {
+            for (Cell cell : cells) {
+                cell.move(dx, dy);
+            }
+        }
+    }
+    
+    /**
      * Mostly (solely) for testing purposes
      *
      * @return

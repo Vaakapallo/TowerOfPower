@@ -7,6 +7,8 @@ package towerofpower;
 import graphics.GameWindow;
 import graphics.draw.level.LevelPanel;
 import java.util.logging.Logger;
+import logic.Champion;
+import logic.Race;
 import logic.level.Level;
 import randomGenerators.WeaponNameGenerator;
 
@@ -34,6 +36,9 @@ public class TowerOfPower {
         a.getGrid().getCellAt(3, 4).setVisibility(false);
         a.getGrid().getCellAt(4, 4).setVisibility(false);
         
+        Champion c = new Champion("Pekka", 30, 20, Race.Fighter);
+        
+        a.getGrid().getCellAt(10,4).setContent(c);
         LevelPanel l = new LevelPanel(a);
         GameWindow window = new GameWindow(l);
     }

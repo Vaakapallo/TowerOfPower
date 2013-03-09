@@ -5,7 +5,7 @@
 package graphics.grid;
 
 import logic.Location;
-import logic.level.CellProperty;
+import logic.level.CellContent;
 
 /**
  *
@@ -15,11 +15,13 @@ public class Cell extends Location implements Comparable<Cell> {
 
     private boolean visible;
     private boolean accessible;
+    private CellContent content;
 
     public Cell(int x, int y) {
         super(x, y);
         this.visible = true;
         this.accessible = false;
+        this.content = null;
     }
 
     public void setVisibility(boolean visible) {
@@ -34,5 +36,13 @@ public class Cell extends Location implements Comparable<Cell> {
     @Override
     public int compareTo(Cell cell) {
         return this.getY() - cell.getY();
+    }
+
+    public void setContent(CellContent c) {
+        this.content = c;
+    }
+
+    public CellContent getContent() {
+        return content;
     }
 }

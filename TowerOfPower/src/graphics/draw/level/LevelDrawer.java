@@ -10,6 +10,7 @@ import graphics.grid.Cell;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Random;
 import logic.level.Level;
 
 /**
@@ -24,13 +25,19 @@ public class LevelDrawer {
      * will be assigned to the root folder of level graphics.
      */
     String defaultPath = "resources/level/";
+    private int yMargin;
+    private int xMargin;
+    private int cellHeight;
 
     public void drawLevel(Level l, Graphics g) {
-        
-        int yMargin = 108;
-        int xMargin = 42;
+
+        this.yMargin = 108;
+        this.xMargin = 42;
+        this.cellHeight = 25;
+        l.getGrid().moveGrid(xMargin, yMargin);
 //        drawBackgroundTopHalf(g);
-        drawGrid(l.getGrid(), g, xMargin, yMargin);
+
+        drawGrid(l.getGrid(), g);
         //       drawBackgroundBottomHalf(g);
     }
 
@@ -40,13 +47,13 @@ public class LevelDrawer {
      * @param grid
      * @param g Graphics
      */
-    void drawGrid(Grid grid, Graphics g, int xMargin, int yMargin) {
+    void drawGrid(Grid grid, Graphics g) {
         String path = defaultPath + "grid/50x25/";
         ArrayList<Cell> orderedCells = grid.getCells();
 
         for (Cell c : orderedCells) {
             if (c.isVisible()) {
-                drawCell(g, c, xMargin, yMargin, path);
+                drawCell(g, c, path);
             }
         }
     }
@@ -71,10 +78,11 @@ public class LevelDrawer {
      * @param c Cell
      * @param path Path to the target file.
      */
-    private void drawCell(Graphics g, Cell c, int xMargin, int yMargin, String path) {
-        drawCellTile(g, c, xMargin, yMargin, path);
-
-//        drawCellContents(g, c);
+    private void drawCell(Graphics g, Cell c, String path) {
+        drawCellTile(g, c, path);
+        if (c.getContent() != null) {
+            drawCellContents(g, c);
+        }
     }
 
     /**
@@ -84,30 +92,19 @@ public class LevelDrawer {
      * @param c cell
      * @param path path to the folder of the image
      */
-    private void drawCellTile(Graphics g, Cell c, int xMargin, int yMargin,
-            String path) {
+    private void drawCellTile(Graphics g, Cell c, String path) {
         /**
          * Destination coordinates A.K.A. where the image will be drawn
          *
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-        int dstx1 = c.getX() + xMargin;
-        int dsty1 = c.getY() + yMargin;
         
-        Image i = getImage(path+"00");
+        Random random = new Random();
         
-        int width = i.getWidth(null);
-        int height = i.getHeight(null);
-        
-        int dstx2 = dstx1 + width;
-        int dsty2 = dsty1 + height;
-        
-        g.drawImage(i,
-                dstx1, dsty1,
-                dstx2, dsty2,
-                0, 0,
-                width, height, null);
+        Image i = getImage(path + "0" + random.nextInt(3));
+        drawImage(g, i, c.getX(), c.getY()+this.cellHeight / 2+random.nextInt(5),
+                i.getWidth(null), i.getHeight(null));
     }
 
     /**
@@ -117,7 +114,11 @@ public class LevelDrawer {
      * @param c cell in question
      */
     private void drawCellContents(Graphics g, Cell c) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String path = defaultPath + c.getContent().getPath();
+        Image i = getImage(path);
+        drawImage(g, i,
+                c.getX(), c.getY() + cellHeight - i.getHeight(null),
+                i.getWidth(null), i.getHeight(null));
     }
 
     private void drawBackgroundBottomHalf(Graphics g) {
@@ -126,5 +127,21 @@ public class LevelDrawer {
 
     private void drawBackgroundTopHalf(Graphics g) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private void drawImage(Graphics g, Image i,
+            int x, int y,
+            int width, int height) {
+        int dstx1 = x;
+        int dsty1 = y;
+
+        int dstx2 = dstx1 + width;
+        int dsty2 = dsty1 + height;
+
+        g.drawImage(i,
+                dstx1, dsty1,
+                dstx2, dsty2,
+                0, 0,
+                width, height, null);
     }
 }

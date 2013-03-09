@@ -8,14 +8,13 @@ package logic.level;
  *
  * @author 41407
  */
-public abstract class HasImage {
+public abstract class CellContent {
 
     String path;
 
     public void setPath(String path) {
         this.path = path;
     }
-    
     
     public String getPath() {
         return path;

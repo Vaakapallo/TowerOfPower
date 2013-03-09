@@ -21,8 +21,6 @@ public class ImageLoader {
 
     public ImageLoader(String path) {
         this.i = loadImage(path);
-        System.out.println(this.i.getHeight(null));
-        System.out.println(this.i.getWidth(null));
     }
 
     public Image getImage() {
@@ -30,11 +28,14 @@ public class ImageLoader {
     }
 
     private Image loadImage(String path) {
+        System.out.print(path);
         try {
-            BufferedImage img = null;
+            System.out.println(" OK");
+            BufferedImage img;
             img = ImageIO.read(new File(path));
             return img;
         } catch (IOException e) {
+            System.out.println(" ERREUR");
             return null;
         }
     }

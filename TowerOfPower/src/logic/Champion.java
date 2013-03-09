@@ -6,18 +6,19 @@ package logic;
 
 import logic.item.Armor;
 import logic.item.Weapon;
-import logic.level.HasImage;
+import logic.level.CellContent;
 
 /**
  *
  * @author lassi
  */
-public class Character extends HasImage {
+public class Champion extends CellContent {
 
     private Stats stats;
 
-    public Character(String name, int maxHitPoints, int maxMana, Race race) {
+    public Champion(String name, int maxHitPoints, int maxMana, Race race) {
         stats = new Stats(name, maxHitPoints, maxMana, race);
+        setImage();
     }
 
     /**
@@ -65,5 +66,12 @@ public class Character extends HasImage {
      */
     private int calculateDamage(int damage) {
         return Math.max(0, damage - stats.getArmor().getProtectionValue());
+    }
+    
+    private void setImage() {
+        String path = "character/";
+        if(this.stats.getRace() == Race.Fighter) {
+            super.setPath(path+"fighter");
+        }
     }
 }
