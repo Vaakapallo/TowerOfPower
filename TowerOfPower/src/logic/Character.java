@@ -6,12 +6,13 @@ package logic;
 
 import logic.item.Armor;
 import logic.item.Weapon;
+import logic.level.HasImage;
 
 /**
  *
  * @author lassi
  */
-public class Character {
+public class Character extends HasImage {
 
     private Stats stats;
 

@@ -14,14 +14,17 @@ import logic.level.CellProperty;
 public class Cell extends Location implements Comparable<Cell> {
 
     private boolean visible;
+    private boolean accessible;
 
     public Cell(int x, int y) {
         super(x, y);
         this.visible = true;
+        this.accessible = false;
     }
 
     public void setVisibility(boolean visible) {
         this.visible = visible;
+        this.accessible = false;
     }
 
     public boolean isVisible() {

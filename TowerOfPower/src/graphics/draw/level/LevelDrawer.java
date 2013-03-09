@@ -26,9 +26,9 @@ public class LevelDrawer {
     String defaultPath = "resources/level/";
 
     public void drawLevel(Level l, Graphics g) {
-        drawBackgroundTopHalf(g);
+///        drawBackgroundTopHalf(g);
         drawGrid(l.getGrid(), g);
-        drawBackgroundBottomHalf(g);
+ //       drawBackgroundBottomHalf(g);
     }
 
     /**
@@ -71,7 +71,7 @@ public class LevelDrawer {
     private void drawCell(Graphics g, Cell c, String path) {
         drawCellTile(g, c, path);
 
-        drawCellContents(g, c);
+//        drawCellContents(g, c);
     }
 
     /**

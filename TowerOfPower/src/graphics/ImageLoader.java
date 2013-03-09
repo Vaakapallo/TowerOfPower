@@ -21,6 +21,8 @@ public class ImageLoader {
 
     public ImageLoader(String path) {
         this.i = loadImage(path);
+        System.out.println(this.i.getHeight(null));
+        System.out.println(this.i.getWidth(null));
     }
 
     public Image getImage() {
