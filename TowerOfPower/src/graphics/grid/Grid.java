@@ -21,7 +21,6 @@ public class Grid {
     public Grid(int x, int y) {
         this.grid = new GridCell[x][y];
         assignLocations();
-        normalizeCoordinates();
     }
 
     /**
@@ -40,6 +39,7 @@ public class Grid {
                 xAdd += 2;
             }
         }
+        normalizeCoordinates();
     }
 
     public void setSize(int x, int y) {
@@ -116,6 +116,7 @@ public class Grid {
      * @param height Desired maximum height of the grid.
      */
     public void fitToSize(int width, int height) {
+        assignLocations();
         int xRightmost =
                 grid[grid.length - 1][grid[0].length - 1].getX();
         int yBottom =
@@ -126,6 +127,25 @@ public class Grid {
 
             zoomGrid(zoomFactor);
         }
+    }
+
+    /**
+     * Resizes the cells to be certain size, disregarding any size constraints.
+     * 
+     * If width is an odd number, it will be scaled to the next even number.
+     *
+     * @param width Desired cell width
+     */
+    public void setCellSize(int width) {
+        width/=4;
+        if(width % 2 == 1) {
+            width++;
+        }
+        if(width < 1) {
+            return;
+        }
+        assignLocations();
+        zoomGrid(width);
     }
 
     /**
@@ -183,7 +203,7 @@ public class Grid {
 
     /**
      * Returns the GridCell at given coordinates.
-     * 
+     *
      * @param x
      * @param y
      * @return GridCell at parameter coordinate, or null if coordinate out of

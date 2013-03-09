@@ -23,7 +23,6 @@ public class GameWindow extends JFrame {
         this.setTitle("HELLO WINDOW");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
-        this.setBackground(Color.white);
         addContent(this.getContentPane());
         this.setVisible(true);
     }
