@@ -182,6 +182,22 @@ public class Grid {
     }
 
     /**
+     * Returns the GridCell at given coordinates.
+     * 
+     * @param x
+     * @param y
+     * @return GridCell at parameter coordinate, or null if coordinate out of
+     * bounds
+     */
+    public GridCell getCell(int x, int y) {
+        if (x < grid.length && y < grid[0].length) {
+            return grid[x][y];
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Mostly (solely) for testing purposes
      *
      * @return

@@ -5,6 +5,7 @@
 package graphics.grid;
 
 import logic.Location;
+import logic.level.CellProperty;
 
 /**
  *
@@ -12,8 +13,15 @@ import logic.Location;
  */
 public class GridCell extends Location implements Comparable<GridCell> {
 
+    private boolean visible;
+
     public GridCell(int x, int y) {
         super(x, y);
+        this.visible = true;
+    }
+
+    public void isVisible(boolean visible) {
+        this.visible = visible;
     }
 
     @Override
