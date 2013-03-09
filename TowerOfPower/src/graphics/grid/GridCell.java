@@ -20,8 +20,12 @@ public class GridCell extends Location implements Comparable<GridCell> {
         this.visible = true;
     }
 
-    public void isVisible(boolean visible) {
+    public void setVisibility(boolean visible) {
         this.visible = visible;
+    }
+
+    public boolean isVisible() {
+        return visible;
     }
 
     @Override

@@ -18,7 +18,7 @@ import logic.level.Level;
 
 /**
  * Draws the level on its parent JPanel
- * 
+ *
  * @author 41407
  */
 public class LevelDrawer {
@@ -28,12 +28,15 @@ public class LevelDrawer {
      */
     String defaultPath = "resources/level/";
 
-    public void drawLevel(Level level, Graphics g) {
+    public void drawLevel(Level l, Graphics g) {
+        drawBackgroundTopHalf(g);
+        drawGrid(l.getGrid(), g);
+        drawBackgroundBottomHalf(g);
     }
 
     /**
      * Draws parameter grid
-     * 
+     *
      * @param grid
      * @param g Graphics
      */
@@ -42,12 +45,15 @@ public class LevelDrawer {
         ArrayList<GridCell> orderedCells = grid.getCells();
 
         for (GridCell c : orderedCells) {
-            drawCell(g, c, path);
+            if (c.isVisible()) {
+                drawCell(g, c, path);
+            }
         }
     }
 
     /**
      * Calls ImageLoader to load source image
+     *
      * @param path
      * @return Image to be drawn
      */
@@ -58,9 +64,9 @@ public class LevelDrawer {
 
     /**
      * Handles cell drawing.
-     * 
+     *
      * For now, only works for 50px cells.
-     * 
+     *
      * @param g Graphics
      * @param c GridCell
      * @param path Path to the target file.
@@ -73,5 +79,13 @@ public class LevelDrawer {
         dsty2 = dsty1 + 25;
         g.drawImage(getImage(path + "00"), dstx1, dsty1, dstx2,
                 dsty2, 0, 0, 50, 25, null);
+    }
+
+    private void drawBackgroundBottomHalf(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void drawBackgroundTopHalf(Graphics g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
