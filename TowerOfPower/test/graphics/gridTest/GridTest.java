@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package graphicsTest;
+package graphics.gridTest;
 
-import graphics.Grid;
-import graphics.GridCell;
+import graphics.grid.Grid;
+import graphics.grid.GridCell;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
