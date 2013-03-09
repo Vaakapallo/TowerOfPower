@@ -5,7 +5,9 @@
 package towerofpower;
 
 import graphics.GameWindow;
+import graphics.GodPanel;
 import graphics.draw.level.LevelPanel;
+import graphics.draw.level.UIPanel;
 import java.util.logging.Logger;
 import logic.Champion;
 import logic.Race;
@@ -29,7 +31,7 @@ public class TowerOfPower {
 
         
         Level a = new Level(16, 14);
-        a.getGrid().setCellSize(50);
+        a.getGrid().setCellSize(54);
         
         a.getGrid().getCellAt(3, 3).setVisibility(false);
         a.getGrid().getCellAt(4, 3).setVisibility(false);
@@ -44,6 +46,8 @@ public class TowerOfPower {
         a.getGrid().getCellAt(10,4).setContent(c);
         a.getGrid().getCellAt(3,8).setContent(d);
         LevelPanel l = new LevelPanel(a);
-        GameWindow window = new GameWindow(l);
+        UIPanel u = new UIPanel();
+        GodPanel g = new GodPanel(l, u);
+        GameWindow window = new GameWindow(g);
     }
 }

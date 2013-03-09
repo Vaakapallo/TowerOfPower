@@ -4,7 +4,6 @@
  */
 package graphics.draw.level;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import logic.level.Level;
@@ -30,7 +29,6 @@ public class LevelPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(new Color(0,0,0));
         d.drawLevel(l, g);
     }
 }

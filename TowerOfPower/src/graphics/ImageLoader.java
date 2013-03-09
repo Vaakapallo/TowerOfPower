@@ -44,9 +44,9 @@ public class ImageLoader {
     private Image loadImage(String path) {
         System.out.print(path);
         try {
-            System.out.println(" OK");
             BufferedImage img;
             img = ImageIO.read(new File(path));
+            System.out.println(" OK");
             return img;
         } catch (IOException e) {
             try {

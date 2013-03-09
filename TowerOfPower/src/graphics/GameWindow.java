@@ -4,6 +4,7 @@
  */
 package graphics;
 
+import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,7 +22,8 @@ public class GameWindow extends JFrame {
         this.p = p;
         this.setTitle("HELLO WINDOW");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(860, 600);
+        this.setSize(1024, 768);
+        this.setBackground(Color.black);
         addContent(this.getContentPane());
         this.setVisible(true);
     }

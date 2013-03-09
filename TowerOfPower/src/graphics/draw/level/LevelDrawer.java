@@ -27,15 +27,16 @@ public class LevelDrawer {
     String defaultPath = "resources/level/";
     private int yMargin;
     private int xMargin;
-    
+
     public void drawLevel(Level l, Graphics g) {
 
-        this.yMargin = 108;
-        this.xMargin = 42;
+        this.yMargin = l.getxMargin();
+        this.xMargin = l.getyMargin();
         l.getGrid().moveGrid(xMargin, yMargin);
-//        drawBackgroundTopHalf(g);
+        drawBackgroundTopHalf(g, l);
 
         drawGrid(l.getGrid(), g);
+        drawCellContents(l.getGrid(), g);
         //       drawBackgroundBottomHalf(g);
     }
 
@@ -46,7 +47,7 @@ public class LevelDrawer {
      * @param g Graphics
      */
     void drawGrid(Grid grid, Graphics g) {
-        String path = defaultPath + "grid/50x25/";
+        String path = defaultPath + "grid/50/";
         ArrayList<Cell> orderedCells = grid.getCells();
 
         for (Cell c : orderedCells) {
@@ -78,9 +79,6 @@ public class LevelDrawer {
      */
     private void drawCell(Graphics g, Cell c, String path) {
         drawCellTile(g, c, path);
-        if (c.getContent() != null) {
-            drawCellContents(g, c);
-        }
     }
 
     /**
@@ -97,10 +95,9 @@ public class LevelDrawer {
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-        
         Random random = new Random();
-        
-        Image i = getImage(path + "0" + random.nextInt(3));
+
+        Image i = getImage(path + "0" + random.nextInt(1));
         drawImage(g, i, c.getX(), c.getY() - c.getHeight(),
                 i.getWidth(null), i.getHeight(null));
     }
@@ -111,21 +108,32 @@ public class LevelDrawer {
      * @param g graphics
      * @param c cell in question
      */
-    private void drawCellContents(Graphics g, Cell c) {
-        String path = defaultPath + c.getContent().getPath();
-        Image i = getImage(path);
-        drawImage(g, i,
-                c.getX(),
-                c.getY()+c.getHeight() - i.getHeight(null),
-                i.getWidth(null), i.getHeight(null));
+    private void drawCellContents(Grid grid, Graphics g) {
+
+        ArrayList<Cell> orderedCells = grid.getCells();
+
+        for (Cell c : orderedCells) {
+            if (c.getContent() != null) {
+                String path = defaultPath + c.getContent().getPath();
+                Image i = getImage(path);
+                drawImage(g, i,
+                        c.getX(),
+                        c.getY() + c.getHeight() - i.getHeight(null),
+                        i.getWidth(null), i.getHeight(null));
+            }
+        }
+
     }
 
     private void drawBackgroundBottomHalf(Graphics g) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private void drawBackgroundTopHalf(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private void drawBackgroundTopHalf(Graphics g, Level l) {
+        String path = defaultPath + "background/";
+        path += l.getBackgroundImage();
+        Image i = getImage(path);
+        drawImage(g, i, 0, 0, i.getWidth(null), i.getWidth(null));
     }
 
     private void drawImage(Graphics g, Image i,
