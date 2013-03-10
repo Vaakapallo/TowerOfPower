@@ -15,7 +15,7 @@ public class EquipmentNameGenerator {
      * The Bottom Level is a nasty and dirty place.
      */
     private static String[] bottomLevelAdjectives = {"Shitty ", "Slimy ", "Glistening ", "Sticky ", "Brittle ", "Crappy ", "Sucky ", "Gross ", "Cracked ", "Slick ", "Rusty ", "Grimy ", "Dirty "};
-    private static String[] bottomLevelMeleeWeaponNouns = {"Shank", "Hammer", "Rock", "Brick", "Keg", "Stick", "Sickle", "Mallet", "Piece", "Pipe"};
+    private static String[] bottomLevelMeleeWeaponNouns = {"Shank", "Hammer", "Rock", "Brick", "Keg", "Stick", "Sickle", "Mallet", "Piece", "Pipe", "Spoon"};
     private static String[] bottomLevelRangedWeaponHolders = {"Keg", "Jug", "Box", "Bag", "Pouch"};
     private static String[] bottomLevelMeleeWeaponEndingNouns = {"Muck", "Garbage", "Mud", "Beer", "Decay", "Maggots", "Shame", "Shit", "Shame"};
     private static String[] bottomLevelRangedWeaponAmmo = {"Garbage", "Bricks", "Maggots", "Roaches", "Plates", "Rocks"};
