@@ -20,7 +20,8 @@ public class LevelDrawer {
 
     private HashMap<String, Image> images;
 
-    public LevelDrawer() {
+    public LevelDrawer(Level l) {
+        this.images = l.getLevelImages();
     }
 
     public void drawLevel(Level l, Graphics g) {
@@ -28,7 +29,6 @@ public class LevelDrawer {
         drawGrid(g, l);
         drawCellContents(g, l);
         drawBackgroundTopLayers(g, l);
-        this.images = l.getLevelImages();
     }
 
     /**
@@ -107,22 +107,23 @@ public class LevelDrawer {
 
     private void drawImage(Graphics g, String image,
             int x, int y) {
+        if (images.containsKey(image)) {
+            Image i = images.get(image);
 
-        Image i = images.get(image);
-        
-        int width = i.getWidth(null);
-        int height = i.getHeight(null);
+            int width = i.getWidth(null);
+            int height = i.getHeight(null);
 
-        int dstx1 = x;
-        int dsty1 = y;
+            int dstx1 = x;
+            int dsty1 = y;
 
-        int dstx2 = dstx1;
-        int dsty2 = dsty1;
+            int dstx2 = dstx1+width;
+            int dsty2 = dsty1+height;
 
-        g.drawImage(i,
-                dstx1, dsty1,
-                dstx2, dsty2,
-                0, 0,
-                width, height, null);
+            g.drawImage(i,
+                    dstx1, dsty1,
+                    dstx2, dsty2,
+                    0, 0,
+                    width, height, null);
+        }
     }
 }

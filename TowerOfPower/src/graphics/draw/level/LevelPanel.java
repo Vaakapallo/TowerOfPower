@@ -18,7 +18,7 @@ public class LevelPanel extends JPanel {
     private Level l;
 
     public LevelPanel(Level level) {
-        this.d = new LevelDrawer();
+        this.d = new LevelDrawer(level);
         this.l = level;
     }
 
