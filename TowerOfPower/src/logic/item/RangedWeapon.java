@@ -41,6 +41,9 @@ public class RangedWeapon extends Weapon {
      */
     @Override
     public int attack() {
+        if (currentAmmo == 0) {
+            return 0;
+        }
         currentAmmo--;
         return super.attack();
     }

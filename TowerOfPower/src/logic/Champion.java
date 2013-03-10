@@ -46,9 +46,12 @@ public class Champion extends CellContent {
         stats.setArmor(armor);
         return lastArmor;
     }
-    
-    public int dealDamage(){
-        return 5;
+
+    public int dealDamage() {
+        if (stats.getWeapon() == null) {
+            return 1;
+        }
+        return stats.getWeapon().attack();
     }
 
     /**

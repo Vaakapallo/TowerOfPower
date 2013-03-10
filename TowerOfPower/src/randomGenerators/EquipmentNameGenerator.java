@@ -4,8 +4,6 @@
  */
 package randomGenerators;
 
-import java.util.Random;
-
 /**
  *
  * @author lassi
@@ -23,17 +21,16 @@ public class EquipmentNameGenerator {
     private static String[] bottomLevelRangedWeaponAmmo = {"Garbage", "Bricks", "Maggots", "Roaches", "Plates", "Rocks"};
     private static String[] meleeWeaponNameEndingNouns = {"axe", "hammer", "saber", "sickle", "mace", "sword"};
     private static String[] rangedWeaponNameEndingNouns = {"bow", "sling", "crossbow", "shotgun"};
-    private static Random random = new Random();
-    
+
     public static String generateMeleeWeaponName() {
         return randomWordFromArray(bottomLevelAdjectives) + randomWordFromArray(bottomLevelMeleeWeaponNouns) + " of " + randomWordFromArray(bottomLevelMeleeWeaponEndingNouns);
     }
-    
+
     public static String generateRangedWeaponName() {
         return randomWordFromArray(bottomLevelRangedWeaponHolders) + " of " + randomWordFromArray(bottomLevelAdjectives) + randomWordFromArray(bottomLevelRangedWeaponAmmo);
     }
-    
+
     private static String randomWordFromArray(String[] array) {
-        return array[random.nextInt(array.length)];
+        return array[RandomInteger.getRandomInt(array.length)];
     }
 }

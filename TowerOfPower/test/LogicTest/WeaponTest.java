@@ -52,7 +52,9 @@ public class WeaponTest {
     @Test
     public void weaponAttackWorks() {
         Weapon weapon = new Weapon(5, 8);
-        int damage = weapon.attack();
-        assertTrue(damage <= 8 && damage >= 5);
+        for (int i = 0; i < 10; i++) {
+            int damage = weapon.attack();
+            assertTrue(damage <= 8 && damage >= 5);
+        }
     }
 }
