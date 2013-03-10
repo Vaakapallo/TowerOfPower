@@ -74,7 +74,6 @@ public class LevelDrawer {
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-
         drawImage(g, "tile0", c.getX(), c.getY() - c.getHeight());
     }
 
@@ -108,19 +107,22 @@ public class LevelDrawer {
 
     private void drawImage(Graphics g, String image,
             int x, int y) {
+
+        Image i = images.get(image);
         
-        images.get(image);
-        
+        int width = i.getWidth(null);
+        int height = i.getHeight(null);
+
         int dstx1 = x;
         int dsty1 = y;
 
         int dstx2 = dstx1;
         int dsty2 = dsty1;
 
-/*        g.drawImage(i,
-               dstx1, dsty1,
+        g.drawImage(i,
+                dstx1, dsty1,
                 dstx2, dsty2,
                 0, 0,
                 width, height, null);
-  */  }
+    }
 }
