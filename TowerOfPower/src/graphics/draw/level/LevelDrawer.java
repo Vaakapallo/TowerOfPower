@@ -25,10 +25,10 @@ public class LevelDrawer {
     }
 
     public void drawLevel(Level l, Graphics g) {
-        drawBackgroundBottomLayers(g, l);
+        drawBackgroundBottomLayers(g);
         drawGrid(g, l);
         drawCellContents(g, l);
-        drawBackgroundTopLayers(g, l);
+        drawBackgroundTopLayers(g);
     }
 
     /**
@@ -42,7 +42,7 @@ public class LevelDrawer {
 
         for (Cell c : orderedCells) {
             if (c.isVisible()) {
-                drawCell(g, l, c);
+                drawCell(g, c);
             }
         }
     }
@@ -56,8 +56,8 @@ public class LevelDrawer {
      * @param c Cell
      * @param path Path to the target file.
      */
-    private void drawCell(Graphics g, Level l, Cell c) {
-        drawCellTile(g, l, c);
+    private void drawCell(Graphics g, Cell c) {
+        drawCellTile(g, c);
     }
 
     /**
@@ -67,14 +67,14 @@ public class LevelDrawer {
      * @param c cell
      * @param path path to the folder of the image
      */
-    private void drawCellTile(Graphics g, Level l, Cell c) {
+    private void drawCellTile(Graphics g, Cell c) {
         /**
          * Destination coordinates A.K.A. where the image will be drawn
          *
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-        drawImage(g, "tile0", c.getX(), c.getY() - c.getHeight());
+        drawImage(g, "tile0", c.getX(), c.getY());
     }
 
     /**
@@ -95,12 +95,12 @@ public class LevelDrawer {
          */
     }
 
-    private void drawBackgroundTopLayers(Graphics g, Level l) {
+    private void drawBackgroundTopLayers(Graphics g) {
         drawImage(g, "bg2", 0, 0);
         drawImage(g, "bg3", 0, 0);
     }
 
-    private void drawBackgroundBottomLayers(Graphics g, Level l) {
+    private void drawBackgroundBottomLayers(Graphics g) {
         drawImage(g, "bg0", 0, 0);
         drawImage(g, "bg1", 0, 0);
     }

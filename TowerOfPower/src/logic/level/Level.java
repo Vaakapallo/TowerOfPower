@@ -17,26 +17,28 @@ import java.util.Map;
 public class Level {
 
     private Grid grid;
-    
     /**
      * Distance between the top of the panel to the left and top borders of the
      * grid, respectively
      */
     private int xMargin,
-                yMargin;
-
+            yMargin,
+            levelNumber,
+            xDimension,
+            yDimension,
+            cellSize;
     private HashMap<String, Image> images;
-    
-    private String backgroundImage;
-    
-    public Level(int x, int y) {
-        this.xMargin = 156;
-        this.yMargin = 222;
-        this.backgroundImage = "bg00";
-                this.grid = new Grid(x, y);
-        grid.setCellSize(54);
+
+    public Level(int levelNumber, int xDimension, int yDimension, int cellSize, int xMargin, int yMargin) {
+        this.levelNumber = levelNumber;
+        this.xDimension = xDimension;
+        this.yDimension = yDimension;
+        this.cellSize = cellSize;
+        this.grid = new Grid(xDimension, yDimension);
+        grid.setCellSize(cellSize);
+        this.xMargin = xMargin;
+        this.yMargin = yMargin;
         grid.moveGrid(xMargin, yMargin);
-        int levelNumber = 0;
         this.images = (HashMap<String, Image>) new LevelImages(levelNumber).getImages();
     }
 
@@ -50,10 +52,6 @@ public class Level {
 
     public int getyMargin() {
         return yMargin;
-    }
-
-    public String getBackgroundImage() {
-        return backgroundImage;
     }
 
     public Grid getGrid() {

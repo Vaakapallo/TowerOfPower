@@ -7,6 +7,7 @@ package towerofpower;
 import graphics.draw.level.LevelPanel;
 import graphics.ui.GameWindow;
 import logic.level.Level;
+import logic.level.ParseLevel;
 import randomGenerators.EquipmentNameGenerator;
 
 /**
@@ -23,7 +24,8 @@ public class TowerOfPower {
             System.out.println(EquipmentNameGenerator.generateMeleeWeaponName());
             System.out.println(EquipmentNameGenerator.generateRangedWeaponName());
         }
-        Level a = new Level(14, 14);
+        ParseLevel p = new ParseLevel("level0");
+        Level a = p.getL();
         LevelPanel l = new LevelPanel(a);
         GameWindow w = new GameWindow(l);
         w.setSize(1024, 768);
