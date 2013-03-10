@@ -48,4 +48,11 @@ public class WeaponTest {
         Item crossbow = new RangedWeapon("Awesomebow of Grilling", 2, 5, 3, 10);
         assertEquals("Awesomebow of Grilling (Damage: 2-5)", crossbow.toString());
     }
+
+    @Test
+    public void weaponAttackWorks() {
+        Weapon weapon = new Weapon(5, 8);
+        int damage = weapon.attack();
+        assertTrue(damage <= 8 && damage >= 5);
+    }
 }

@@ -11,8 +11,22 @@ import java.util.Random;
  * @author 41407
  */
 public class RandomInteger {
+
+    private static Random random = new Random();
+
+    /**
+     * Just calls random.nextInt() with the given parameter.
+     *
+     * Saves us from generating Random-objects everywhere.
+     *
+     * @param range
+     * @return
+     */
+    public static int getRandomInt(int range) {
+        return random.nextInt(range);
+    }
+
     public static int getRandom() {
-        Random random = new Random();
-        return random.nextInt(20000);
+        return getRandomInt(20000);
     }
 }

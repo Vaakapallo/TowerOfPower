@@ -5,6 +5,7 @@
 package logic.item;
 
 import randomGenerators.EquipmentNameGenerator;
+import randomGenerators.RandomInteger;
 
 /**
  *
@@ -42,7 +43,8 @@ public class Weapon extends Item {
         return maxDamage;
     }
 
-    public void attack() {
+    public int attack() {
+        return RandomInteger.getRandomInt(maxDamage - minDamage) + minDamage;
     }
 
     @Override

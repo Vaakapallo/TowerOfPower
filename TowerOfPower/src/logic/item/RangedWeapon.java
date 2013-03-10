@@ -40,8 +40,9 @@ public class RangedWeapon extends Weapon {
      * AKA Shoot. Reduces current ammo by one.
      */
     @Override
-    public void attack() {
+    public int attack() {
         currentAmmo--;
+        return super.attack();
     }
 
     /**

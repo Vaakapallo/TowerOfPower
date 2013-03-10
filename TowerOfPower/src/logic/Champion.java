@@ -46,6 +46,10 @@ public class Champion extends CellContent {
         stats.setArmor(armor);
         return lastArmor;
     }
+    
+    public int dealDamage(){
+        return 5;
+    }
 
     /**
      * Makes the character take damage.
