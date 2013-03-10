@@ -6,6 +6,7 @@ package graphics.grid;
 
 import logic.Location;
 import logic.level.CellContent;
+import randomGenerators.RandomInteger;
 
 /**
  *
@@ -17,12 +18,14 @@ public class Cell extends Location implements Comparable<Cell> {
     private boolean accessible;
     private CellContent content;
     private int height;
+    private int tileVariant;
 
     public Cell(int x, int y) {
         super(x, y);
         this.visible = true;
         this.accessible = false;
         this.content = null;
+        this.tileVariant = RandomInteger.getRandom();
     }
 
     public void setVisibility(boolean visible) {
@@ -50,7 +53,6 @@ public class Cell extends Location implements Comparable<Cell> {
     public int getHeight() {
         return height;
     }
-
 
     public void setHeight(int height) {
         this.height = height;

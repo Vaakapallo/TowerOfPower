@@ -49,15 +49,8 @@ public class ImageLoader {
             System.out.println(" OK");
             return img;
         } catch (IOException e) {
-            try {
-                System.out.println(" NOT FOUND");
-                BufferedImage img;
-                img = ImageIO.read(new File("resources/notfound.png"));
-                return img;
-            } catch (IOException f) {
-                System.out.println(" NOT FOUND");
-                return null;
-            }
+            System.out.println(" NOT FOUND");
+            return null;
         }
     }
 }

@@ -4,13 +4,11 @@
  */
 package graphics.draw.level;
 
-import graphics.ImageLoader;
-import graphics.grid.Grid;
 import graphics.grid.Cell;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.HashMap;
 import logic.level.Level;
 
 /**
@@ -20,24 +18,17 @@ import logic.level.Level;
  */
 public class LevelDrawer {
 
-    /**
-     * The default path from where to look for image files. In this case, it
-     * will be assigned to the root folder of level graphics.
-     */
-    String defaultPath = "resources/level/";
-    private int yMargin;
-    private int xMargin;
+    private HashMap<String, Image> images;
 
     public LevelDrawer() {
     }
 
     public void drawLevel(Level l, Graphics g) {
-        drawBackgroundTopHalf(g, l);
-        drawGrid(l.getGrid(), g);
-        drawCellContents(l.getGrid(), g);
-        drawBackgroundBottomHalf(g, l);
-        g.drawLine(xMargin, 0, xMargin, 12309);
-        g.drawLine(0, yMargin, 143241, yMargin);
+        drawBackgroundBottomLayers(g, l);
+        drawGrid(g, l);
+        drawCellContents(g, l);
+        drawBackgroundTopLayers(g, l);
+        this.images = l.getLevelImages();
     }
 
     /**
@@ -46,26 +37,14 @@ public class LevelDrawer {
      * @param grid
      * @param g Graphics
      */
-    void drawGrid(Grid grid, Graphics g) {
-        String path = defaultPath + "grid/54/";
-        ArrayList<Cell> orderedCells = grid.getCells();
+    void drawGrid(Graphics g, Level l) {
+        ArrayList<Cell> orderedCells = l.getGrid().getCells();
 
         for (Cell c : orderedCells) {
             if (c.isVisible()) {
-                drawCell(g, c, path);
+                drawCell(g, l, c);
             }
         }
-    }
-
-    /**
-     * Calls ImageLoader to load source image
-     *
-     * @param path
-     * @return Image to be drawn
-     */
-    private Image getImage(String path) {
-        ImageLoader l = new ImageLoader(path + ".png");
-        return l.getImage();
     }
 
     /**
@@ -77,8 +56,8 @@ public class LevelDrawer {
      * @param c Cell
      * @param path Path to the target file.
      */
-    private void drawCell(Graphics g, Cell c, String path) {
-        drawCellTile(g, c, path);
+    private void drawCell(Graphics g, Level l, Cell c) {
+        drawCellTile(g, l, c);
     }
 
     /**
@@ -88,18 +67,15 @@ public class LevelDrawer {
      * @param c cell
      * @param path path to the folder of the image
      */
-    private void drawCellTile(Graphics g, Cell c, String path) {
+    private void drawCellTile(Graphics g, Level l, Cell c) {
         /**
          * Destination coordinates A.K.A. where the image will be drawn
          *
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-        Random random = new Random();
 
-        Image i = getImage(path + "0" + random.nextInt(4));
-        drawImage(g, i, c.getX(), c.getY() - c.getHeight() - random.nextInt(3) + 2,
-                i.getWidth(null), i.getHeight(null));
+        drawImage(g, "tile0", c.getX(), c.getY() - c.getHeight());
     }
 
     /**
@@ -108,50 +84,43 @@ public class LevelDrawer {
      * @param g graphics
      * @param c cell in question
      */
-    private void drawCellContents(Grid grid, Graphics g) {
-
-        ArrayList<Cell> orderedCells = grid.getCells();
-
-        for (Cell c : orderedCells) {
-            if (c.getContent() != null) {
-                String path = defaultPath + c.getContent().getPath();
-                Image i = getImage(path);
-                drawImage(g, i,
-                        c.getX(),
-                        c.getY() + c.getHeight() - i.getHeight(null),
-                        i.getWidth(null), i.getHeight(null));
-            }
-        }
-
+    private void drawCellContents(Graphics g, Level l) {
+        /**
+         * TO DO : )
+         *
+         * ArrayList<Cell> orderedCells = grid.getCells();
+         *
+         * for (Cell c : orderedCells) { if (c.getContent() != null) {
+         * drawImage(g, i, c.getX(), c.getY() + c.getHeight() -
+         * i.getHeight(null), i.getWidth(null), i.getHeight(null)); } }
+         */
     }
 
-    private void drawBackgroundBottomHalf(Graphics g, Level l) {
-        String path = defaultPath + "background/";
-        path += l.getBackgroundImage() + "bottom";
-        Image i = getImage(path);
-        drawImage(g, i, 0, 0, i.getWidth(null), i.getWidth(null));
+    private void drawBackgroundTopLayers(Graphics g, Level l) {
+        drawImage(g, "bg2", 0, 0);
+        drawImage(g, "bg3", 0, 0);
     }
 
-    private void drawBackgroundTopHalf(Graphics g, Level l) {
-        String path = defaultPath + "background/";
-        path += l.getBackgroundImage() + "top";
-        Image i = getImage(path);
-        drawImage(g, i, 0, 0, i.getWidth(null), i.getWidth(null));
+    private void drawBackgroundBottomLayers(Graphics g, Level l) {
+        drawImage(g, "bg0", 0, 0);
+        drawImage(g, "bg1", 0, 0);
     }
 
-    private void drawImage(Graphics g, Image i,
-            int x, int y,
-            int width, int height) {
+    private void drawImage(Graphics g, String image,
+            int x, int y) {
+        
+        images.get(image);
+        
         int dstx1 = x;
         int dsty1 = y;
 
-        int dstx2 = dstx1 + width;
-        int dsty2 = dsty1 + height;
+        int dstx2 = dstx1;
+        int dsty2 = dsty1;
 
-        g.drawImage(i,
-                dstx1, dsty1,
+/*        g.drawImage(i,
+               dstx1, dsty1,
                 dstx2, dsty2,
                 0, 0,
                 width, height, null);
-    }
+  */  }
 }

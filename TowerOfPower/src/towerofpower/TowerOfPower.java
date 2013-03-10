@@ -22,19 +22,7 @@ public class TowerOfPower {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 10; i++) {
-            System.out.println(WeaponNameGenerator.generateMeleeWeaponName());
-            System.out.println(WeaponNameGenerator.generateRangedWeaponName());
-        }
+
         Level a = new Level(14, 14);
-        LevelPanel l = new LevelPanel(a);
-        GameWindow w = new GameWindow(l);
-        w.setSize(1024, 768);
-        Champion d = new Champion("Brian", 10, 20, Race.Fighter);
-        a.getGrid().getCellAt(3, 9).setContent(d);
-        Level b = new Level(26, 18);
-        l = new LevelPanel(b);
-        w.repaint();
-        l.repaint();
     }
 }

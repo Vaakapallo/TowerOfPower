@@ -4,7 +4,11 @@
  */
 package logic.level;
 
+import graphics.draw.level.LevelImages;
 import graphics.grid.Grid;
+import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -21,6 +25,8 @@ public class Level {
     private int xMargin,
                 yMargin;
 
+    private HashMap<String, Image> images;
+    
     private String backgroundImage;
     
     public Level(int x, int y) {
@@ -30,6 +36,12 @@ public class Level {
                 this.grid = new Grid(x, y);
         grid.setCellSize(54);
         grid.moveGrid(xMargin, yMargin);
+        int levelNumber = 0;
+        this.images = (HashMap<String, Image>) new LevelImages(levelNumber).getImages();
+    }
+
+    public HashMap<String, Image> getLevelImages() {
+        return images;
     }
 
     public int getxMargin() {
