@@ -10,7 +10,7 @@ import graphics.ui.GameWindow;
 import logic.Champion;
 import logic.Race;
 import logic.level.Level;
-import randomGenerators.WeaponNameGenerator;
+import randomGenerators.EquipmentNameGenerator;
 
 /**
  *

@@ -4,6 +4,8 @@
  */
 package logic.item;
 
+import randomGenerators.EquipmentNameGenerator;
+
 /**
  *
  * @author lassi
@@ -15,7 +17,7 @@ public class Weapon extends Item {
 
     /**
      * The Constructor makes sure that minDamage is lower than maxDamage.
-     * 
+     *
      * Also that maxDamage is larger than minDamage.
      *
      * @param minDamage
@@ -28,6 +30,10 @@ public class Weapon extends Item {
         this.maxDamage = Math.max(minDamage, maxDamage);
     }
 
+    public Weapon(int minDamage, int maxDamage) {
+        this(EquipmentNameGenerator.generateMeleeWeaponName(), minDamage, maxDamage);
+    }
+
     public int getMinDamage() {
         return minDamage;
     }
@@ -35,9 +41,8 @@ public class Weapon extends Item {
     public int getMaxDamage() {
         return maxDamage;
     }
-    
-    public void attack(){
-        
+
+    public void attack() {
     }
 
     @Override

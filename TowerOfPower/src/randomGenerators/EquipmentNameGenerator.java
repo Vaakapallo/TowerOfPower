@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author lassi
  */
-public class WeaponNameGenerator {
+public class EquipmentNameGenerator {
 
     //THESE WILL ALL BE MOVED INTO TEXTFILES. Just trying out quick and dirty stuff now.
     /**
