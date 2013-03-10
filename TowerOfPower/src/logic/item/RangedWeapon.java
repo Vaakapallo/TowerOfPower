@@ -4,6 +4,8 @@
  */
 package logic.item;
 
+import randomGenerators.EquipmentNameGenerator;
+
 /**
  *
  * @author lassi
@@ -28,6 +30,10 @@ public class RangedWeapon extends Weapon {
         this.range = range;
         this.maxAmmo = maxAmmo;
         currentAmmo = maxAmmo;
+    }
+
+    public RangedWeapon(int minDamage, int maxDamage, int range, int maxAmmo) {
+        this(EquipmentNameGenerator.generateRangedWeaponName(), minDamage, maxDamage, range, maxAmmo);
     }
 
     /**

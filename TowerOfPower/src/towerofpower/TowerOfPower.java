@@ -10,7 +10,7 @@ import graphics.ui.GameWindow;
 import logic.Champion;
 import logic.Race;
 import logic.level.Level;
-import randomGenerators.WeaponNameGenerator;
+import randomGenerators.EquipmentNameGenerator;
 
 /**
  *
@@ -23,8 +23,8 @@ public class TowerOfPower {
      */
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 10; i++) {
-            System.out.println(WeaponNameGenerator.generateMeleeWeaponName());
-            System.out.println(WeaponNameGenerator.generateRangedWeaponName());
+            System.out.println(EquipmentNameGenerator.generateMeleeWeaponName());
+            System.out.println(EquipmentNameGenerator.generateRangedWeaponName());
         }
         Level a = new Level(14, 14);
         LevelPanel l = new LevelPanel(a);

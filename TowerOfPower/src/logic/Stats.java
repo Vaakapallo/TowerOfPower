@@ -34,14 +34,7 @@ public class Stats {
     }
 
     public Stats(String name, int maxHitPoints, int maxMana, Race race) {
-        this.name = name;
-        this.maxHitPoints = maxHitPoints;
-        this.maxMana = maxMana;
-        this.weapon = null;
-        this.armor = null;
-        this.race = race;
-        this.currentHitPoints = maxHitPoints;
-        this.currentMana = maxMana;
+        this(name, maxHitPoints, maxMana, null, null, race);
     }
 
     public String getName() {
