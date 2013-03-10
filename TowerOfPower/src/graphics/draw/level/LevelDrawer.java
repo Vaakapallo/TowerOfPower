@@ -28,17 +28,14 @@ public class LevelDrawer {
     private int yMargin;
     private int xMargin;
 
+    public LevelDrawer() {
+    }
+
     public void drawLevel(Level l, Graphics g) {
-
-        this.xMargin = l.getxMargin();
-        this.yMargin = l.getyMargin()+l.getGrid().getCellAt(0, 0).getHeight();
-        l.getGrid().moveGrid(xMargin, yMargin);
         drawBackgroundTopHalf(g, l);
-
         drawGrid(l.getGrid(), g);
         drawCellContents(l.getGrid(), g);
         drawBackgroundBottomHalf(g, l);
-        
         g.drawLine(xMargin, 0, xMargin, 12309);
         g.drawLine(0, yMargin, 143241, yMargin);
     }
@@ -101,7 +98,7 @@ public class LevelDrawer {
         Random random = new Random();
 
         Image i = getImage(path + "0" + random.nextInt(4));
-        drawImage(g, i, c.getX(), c.getY() - c.getHeight()-random.nextInt(3)+2,
+        drawImage(g, i, c.getX(), c.getY() - c.getHeight() - random.nextInt(3) + 2,
                 i.getWidth(null), i.getHeight(null));
     }
 

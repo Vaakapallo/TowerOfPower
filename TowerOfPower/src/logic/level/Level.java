@@ -24,10 +24,12 @@ public class Level {
     private String backgroundImage;
     
     public Level(int x, int y) {
-        this.grid = new Grid(x, y);
         this.xMargin = 156;
         this.yMargin = 222;
         this.backgroundImage = "bg00";
+                this.grid = new Grid(x, y);
+        grid.setCellSize(54);
+        grid.moveGrid(xMargin, yMargin);
     }
 
     public int getxMargin() {
