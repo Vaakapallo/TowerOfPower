@@ -26,6 +26,12 @@ public class TowerOfPower {
         }
         ParseLevel p = new ParseLevel("level0");
         Level a = p.getL();
+
+        a.getGrid().getCellAt(5, 5).setVisibility(false);
+        a.getGrid().getCellAt(5, 6).setVisibility(false);
+        a.getGrid().getCellAt(6, 5).setVisibility(false);
+        a.getGrid().getCellAt(6, 6).setVisibility(false);
+
         LevelPanel l = new LevelPanel(a);
         GameWindow w = new GameWindow(l);
         w.setSize(1024, 768);

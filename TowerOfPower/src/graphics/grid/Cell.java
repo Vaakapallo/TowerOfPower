@@ -20,6 +20,10 @@ public class Cell extends Location implements Comparable<Cell> {
     private int height;
     private int tileVariant;
 
+    public int getTileVariant() {
+        return tileVariant;
+    }
+
     public Cell(int x, int y) {
         super(x, y);
         this.visible = true;

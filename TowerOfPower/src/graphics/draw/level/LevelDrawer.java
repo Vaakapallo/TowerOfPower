@@ -39,10 +39,14 @@ public class LevelDrawer {
      */
     void drawGrid(Graphics g, Level l) {
         ArrayList<Cell> orderedCells = l.getGrid().getCells();
+        int amountOfTileVariants = 0;
+        while (images.containsKey("tile" + amountOfTileVariants)) {
+            amountOfTileVariants++;
+        }
 
         for (Cell c : orderedCells) {
             if (c.isVisible()) {
-                drawCell(g, c);
+                drawCell(g, c, amountOfTileVariants);
             }
         }
     }
@@ -56,8 +60,8 @@ public class LevelDrawer {
      * @param c Cell
      * @param path Path to the target file.
      */
-    private void drawCell(Graphics g, Cell c) {
-        drawCellTile(g, c);
+    private void drawCell(Graphics g, Cell c, int amountOfTileVariants) {
+        drawCellTile(g, c, amountOfTileVariants);
     }
 
     /**
@@ -67,14 +71,16 @@ public class LevelDrawer {
      * @param c cell
      * @param path path to the folder of the image
      */
-    private void drawCellTile(Graphics g, Cell c) {
+    private void drawCellTile(Graphics g, Cell c, int amountOfTileVariants) {
         /**
          * Destination coordinates A.K.A. where the image will be drawn
          *
          * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
          * corner width, height : self-explanatory
          */
-        drawImage(g, "tile0", c.getX(), c.getY());
+        String tileToUse = "tile" + c.getTileVariant() % amountOfTileVariants;
+
+        drawImage(g, tileToUse, c.getX(), c.getY()+c.getTileVariant()%4);
     }
 
     /**
@@ -84,15 +90,16 @@ public class LevelDrawer {
      * @param c cell in question
      */
     private void drawCellContents(Graphics g, Level l) {
-        /**
-         * TO DO : )
-         *
-         * ArrayList<Cell> orderedCells = grid.getCells();
-         *
-         * for (Cell c : orderedCells) { if (c.getContent() != null) {
-         * drawImage(g, i, c.getX(), c.getY() + c.getHeight() -
-         * i.getHeight(null), i.getWidth(null), i.getHeight(null)); } }
-         */
+
+
+        ArrayList<Cell> orderedCells = l.getGrid().getCells();
+
+        for (Cell c : orderedCells) {
+            if (c.getContent() != null) {
+                
+            }
+        }
+
     }
 
     private void drawBackgroundTopLayers(Graphics g) {
@@ -116,8 +123,8 @@ public class LevelDrawer {
             int dstx1 = x;
             int dsty1 = y;
 
-            int dstx2 = dstx1+width;
-            int dsty2 = dsty1+height;
+            int dstx2 = dstx1 + width;
+            int dsty2 = dsty1 + height;
 
             g.drawImage(i,
                     dstx1, dsty1,
