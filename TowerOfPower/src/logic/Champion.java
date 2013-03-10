@@ -67,13 +67,9 @@ public class Champion extends CellContent {
     private int calculateDamage(int damage) {
         return Math.max(0, damage - stats.getArmor().getProtectionValue());
     }
-    
+
     private void setImage() {
         String path = "character/";
-        if(this.stats.getRace() == Race.Fighter) {
-            super.setPath(path+"fighter");
-        } else if (this.stats.getRace() == Race.Bowman) {
-            super.setPath(path+"bowman");
-        }
+        super.setPath(path + stats.getRace().toString().toLowerCase());
     }
 }
