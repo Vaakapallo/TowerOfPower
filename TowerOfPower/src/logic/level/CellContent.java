@@ -22,7 +22,7 @@ public abstract class CellContent {
 
     /**
      * Strips the name of the image file, eg. if
-     *      path = resources/level/unit/kaamio.png
+     *      path = resources/level/unit/kaamio
      * toString of this would be
      *      kaamio
      * 
@@ -31,7 +31,6 @@ public abstract class CellContent {
     @Override
     public String toString() {
         String[] lastMember = this.path.split("/");
-        String contentName = lastMember[lastMember.length-1].split(".")[0];
-        return contentName;
+        return lastMember[lastMember.length-1];
     }
 }

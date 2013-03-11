@@ -27,6 +27,6 @@ public class RandomInteger {
     }
 
     public static int getRandom() {
-        return getRandomInt(20000);
+        return getRandomInt(Integer.MAX_VALUE);
     }
 }

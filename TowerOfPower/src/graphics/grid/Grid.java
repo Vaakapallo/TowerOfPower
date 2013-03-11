@@ -178,7 +178,7 @@ public class Grid {
                 x = gridCell.getX();
                 y = gridCell.getY();
                 gridCell.setXY(x * i, y * i);
-                gridCell.setHeight(i);
+                gridCell.setHeight(i*2);
             }
         }
     }

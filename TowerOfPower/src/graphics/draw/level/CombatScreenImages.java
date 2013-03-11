@@ -14,13 +14,13 @@ import logic.level.CellContent;
  *
  * @author 41407
  */
-public class LevelImages {
+public class CombatScreenImages {
 
     private Map<String, Image> images;
     private int levelNumber;
     private String levelDirectory;
 
-    public LevelImages(int levelNumber) {
+    public CombatScreenImages(int levelNumber) {
         this.images = new HashMap();
         this.levelNumber = levelNumber;
         this.levelDirectory = "resources/level/" + levelNumber + "/";
@@ -59,7 +59,8 @@ public class LevelImages {
     }
 
     public void loadCellContent(CellContent c) {
-        ImageLoader imageLoader = new ImageLoader(c.getPath() + ".png");
+        String path = "resources/level/" + c.getPath();
+        ImageLoader imageLoader = new ImageLoader(path + ".png");
         if (imageLoader.getImage() != null) {
             images.put(c.toString(), imageLoader.getImage());
         }

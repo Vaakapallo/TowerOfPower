@@ -11,5 +11,5 @@ package logic;
  */
 public enum Race {
 
-    Fighter, Bowman
+    Fighter, Bowman, Sharpshooter
 }

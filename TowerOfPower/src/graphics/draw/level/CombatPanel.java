@@ -12,13 +12,13 @@ import logic.level.Level;
  *
  * @author 41407
  */
-public class LevelPanel extends JPanel {
+public class CombatPanel extends JPanel {
 
-    private LevelDrawer d;
+    private CombatScreenDrawer d;
     private Level l;
 
-    public LevelPanel(Level level) {
-        this.d = new LevelDrawer(level);
+    public CombatPanel(Level level) {
+        this.d = new CombatScreenDrawer(level);
         this.l = level;
     }
 

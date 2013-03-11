@@ -16,11 +16,11 @@ import logic.level.Level;
  *
  * @author 41407
  */
-public class LevelDrawer {
+public class CombatScreenDrawer {
 
     private HashMap<String, Image> images;
 
-    public LevelDrawer(Level l) {
+    public CombatScreenDrawer(Level l) {
         this.images = l.getLevelImages();
     }
 
@@ -90,7 +90,11 @@ public class LevelDrawer {
 
         for (Cell c : orderedCells) {
             if (c.getContent() != null) {
-                // TODO
+                drawImage(g, c.getContent().toString(),
+                        c.getX(),
+                        c.getY() -
+                        images.get(c.getContent().toString()).getHeight(null)
+                        + c.getHeight());
             }
         }
     }

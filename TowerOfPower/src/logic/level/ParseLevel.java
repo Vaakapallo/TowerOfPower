@@ -20,7 +20,7 @@ public class ParseLevel {
         parseLines(reader.getRivit());
     }
 
-    public Level getL() {
+    public Level getLevel() {
         return l;
     }
 
