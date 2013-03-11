@@ -33,13 +33,11 @@ public class ImageLoader {
     }
 
     /**
-     * Attempts to load image file from path. If file does not exist, returns an
-     * error image and system-outs an error line.
-     *
-     * If error image doesn't exist, system-outs an error line and returns null.
+     * Attempts to load image file from path. If file does not exist, returns
+     * null and system-outs an error line.
      *
      * @param path Path to image file
-     * @return Desired Image, debug image or null.
+     * @return Desired Image or null.
      */
     private Image loadImage(String path) {
         System.out.print(path);

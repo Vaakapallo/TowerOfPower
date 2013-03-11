@@ -39,6 +39,11 @@ public class LevelDrawer {
      */
     void drawGrid(Graphics g, Level l) {
         ArrayList<Cell> orderedCells = l.getGrid().getCells();
+
+        /**
+         * Point of this is to solve the amount of different tile graphic files
+         * drawn for current level
+         */
         int amountOfTileVariants = 0;
         while (images.containsKey("tile" + amountOfTileVariants)) {
             amountOfTileVariants++;
@@ -46,22 +51,9 @@ public class LevelDrawer {
 
         for (Cell c : orderedCells) {
             if (c.isVisible()) {
-                drawCell(g, c, amountOfTileVariants);
+                drawCellTile(g, c, amountOfTileVariants);
             }
         }
-    }
-
-    /**
-     * Handles cell drawing.
-     *
-     * For now, only works for 50px cells.
-     *
-     * @param g Graphics
-     * @param c Cell
-     * @param path Path to the target file.
-     */
-    private void drawCell(Graphics g, Cell c, int amountOfTileVariants) {
-        drawCellTile(g, c, amountOfTileVariants);
     }
 
     /**
@@ -73,14 +65,18 @@ public class LevelDrawer {
      */
     private void drawCellTile(Graphics g, Cell c, int amountOfTileVariants) {
         /**
-         * Destination coordinates A.K.A. where the image will be drawn
-         *
-         * (dstx1, dsty1) : upper left corner (dstx2, dsty2) : lower right
-         * corner width, height : self-explanatory
+         * Selects the tile graphic to be used for this cell
          */
-        String tileToUse = "tile" + c.getTileVariant() % amountOfTileVariants;
+        int tileVariant = c.getTileVariant() % amountOfTileVariants;
+        String tileToUse = "tile" + tileVariant;
 
-        drawImage(g, tileToUse, c.getX(), c.getY()+c.getTileVariant()%4);
+        /**
+         * The last parameter here uses cell->variant as a randomization source
+         * for the 3d height of the tile. The upside of this approach is that
+         * each cell will have a fixed 3d height so that units and other cell
+         * contents will be drawn correctly according to tile height.
+         */
+        drawImage(g, tileToUse, c.getX(), c.getY() + c.getTileVariant() % 4);
     }
 
     /**
@@ -90,28 +86,44 @@ public class LevelDrawer {
      * @param c cell in question
      */
     private void drawCellContents(Graphics g, Level l) {
-
-
         ArrayList<Cell> orderedCells = l.getGrid().getCells();
 
         for (Cell c : orderedCells) {
             if (c.getContent() != null) {
-                
+                // TODO
             }
         }
-
     }
 
+    /**
+     * For now, draws the top two of the static background images.
+     * 
+     * @param g Graphics
+     */
     private void drawBackgroundTopLayers(Graphics g) {
         drawImage(g, "bg2", 0, 0);
         drawImage(g, "bg3", 0, 0);
     }
-
+    
+    /**
+     * For now, draws the bottom two of the static background images.
+     * 
+     * @param g Graphics
+     */
     private void drawBackgroundBottomLayers(Graphics g) {
         drawImage(g, "bg0", 0, 0);
         drawImage(g, "bg1", 0, 0);
     }
 
+    /**
+     * If the parameter image has been loaded, draws it at parameter
+     * coordinates, scaled 1:1
+     * 
+     * @param g Graphics
+     * @param image Source image
+     * @param x Destination x
+     * @param y Destination y
+     */
     private void drawImage(Graphics g, String image,
             int x, int y) {
         if (images.containsKey(image)) {

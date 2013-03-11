@@ -19,5 +19,19 @@ public abstract class CellContent {
     public String getPath() {
         return path;
     }
-    
+
+    /**
+     * Strips the name of the image file, eg. if
+     *      path = resources/level/unit/kaamio.png
+     * toString of this would be
+     *      kaamio
+     * 
+     * @return 
+     */
+    @Override
+    public String toString() {
+        String[] lastMember = this.path.split("/");
+        String contentName = lastMember[lastMember.length-1].split(".")[0];
+        return contentName;
+    }
 }

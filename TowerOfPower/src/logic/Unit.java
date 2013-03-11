@@ -12,11 +12,11 @@ import logic.level.CellContent;
  *
  * @author lassi
  */
-public class Champion extends CellContent {
+public class Unit extends CellContent {
 
     private Stats stats;
 
-    public Champion(String name, int maxHitPoints, int maxMana, Race race) {
+    public Unit(String name, int maxHitPoints, int maxMana, Race race) {
         stats = new Stats(name, maxHitPoints, maxMana, race);
         setImage();
     }
@@ -76,7 +76,7 @@ public class Champion extends CellContent {
     }
 
     private void setImage() {
-        String path = "character/";
+        String path = "unit/";
         super.setPath(path + stats.getRace().toString().toLowerCase());
     }
 }

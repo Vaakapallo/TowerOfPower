@@ -21,12 +21,14 @@ public class Level {
      * Distance between the top of the panel to the left and top borders of the
      * grid, respectively
      */
-    private int xMargin,
-            yMargin,
+    private int 
             levelNumber,
+            xMargin,
+            yMargin,
             xDimension,
             yDimension,
             cellSize;
+    
     private HashMap<String, Image> images;
 
     public Level(int levelNumber, int xDimension, int yDimension, int cellSize, int xMargin, int yMargin) {
@@ -34,12 +36,18 @@ public class Level {
         this.xDimension = xDimension;
         this.yDimension = yDimension;
         this.cellSize = cellSize;
-        this.grid = new Grid(xDimension, yDimension);
-        grid.setCellSize(cellSize);
+
         this.xMargin = xMargin;
         this.yMargin = yMargin;
-        grid.moveGrid(xMargin, yMargin);
+
         this.images = (HashMap<String, Image>) new LevelImages(levelNumber).getImages();
+        initializeGrid();
+    }
+
+    private void initializeGrid() {
+        this.grid = new Grid(xDimension, yDimension);
+        grid.setCellSize(cellSize);
+        grid.moveGrid(xMargin, yMargin);
     }
 
     public HashMap<String, Image> getLevelImages() {
@@ -58,3 +66,4 @@ public class Level {
         return grid;
     }
 }
+

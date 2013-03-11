@@ -8,6 +8,7 @@ import graphics.ImageLoader;
 import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
+import logic.level.CellContent;
 
 /**
  *
@@ -54,6 +55,13 @@ public class LevelImages {
             if (imageLoader.getImage() != null) {
                 images.put(imageName + i, imageLoader.getImage());
             }
+        }
+    }
+
+    public void loadCellContent(CellContent c) {
+        ImageLoader imageLoader = new ImageLoader(c.getPath() + ".png");
+        if (imageLoader.getImage() != null) {
+            images.put(c.toString(), imageLoader.getImage());
         }
     }
 
