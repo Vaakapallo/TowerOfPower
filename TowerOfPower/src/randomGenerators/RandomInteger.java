@@ -25,7 +25,11 @@ public class RandomInteger {
     public static int getRandomInt(int range) {
         return random.nextInt(range);
     }
-
+    
+    public static double getRandomDouble() {
+        return random.nextDouble();
+    }
+    
     public static int getRandom() {
         return getRandomInt(Integer.MAX_VALUE);
     }
