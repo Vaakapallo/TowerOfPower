@@ -26,8 +26,8 @@ public class RandomInteger {
         return random.nextInt(range);
     }
     
-    public static double getRandomDouble() {
-        return random.nextDouble();
+    public static double getRandomDouble(double range) {
+        return random.nextDouble(range);
     }
     
     public static int getRandom() {
