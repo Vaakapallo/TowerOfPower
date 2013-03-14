@@ -8,6 +8,9 @@ package logic;
  *
  * @author Lassi
  */
-public class UnitNotOnGridException {
-    
+class UnitNotOnGridException extends Exception{
+
+    public UnitNotOnGridException(String message) {
+        super(message);
+    }
 }
