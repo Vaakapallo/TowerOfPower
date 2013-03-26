@@ -22,9 +22,11 @@ public abstract class CellContent {
 
     /**
      * Strips the name of the image file, eg. if
-     *      path = resources/level/unit/kaamio
+     *      path = unit/kaamio
      * toString of this would be
      *      kaamio
+     * 
+     * This is used to assign hash keys for graphics
      * 
      * @return 
      */

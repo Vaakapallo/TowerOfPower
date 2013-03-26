@@ -9,17 +9,31 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
- *
+ * Isometric grid that consists of Cells
+ * 
  * @author 41407
  */
 public class Grid {
 
+    /**
+     * Array to store grid Cells
+     */
     private Cell[][] grid;
-    private int xSize;
-    private int ySize;
+    
+    /**
+     * Grid's position in pixels
+     */
+    private int xPosition;
+    private int yPosition;
 
-    public Grid(int x, int y) {
-        this.grid = new Cell[x][y];
+    /**
+     * Creates a grid of specific dimensions.
+     * 
+     * @param xDimension
+     * @param yDimension 
+     */
+    public Grid(int xDimension, int yDimension) {
+        this.grid = new Cell[xDimension][yDimension];
         assignLocations();
     }
 
@@ -42,16 +56,16 @@ public class Grid {
         normalizeCoordinates();
     }
 
-    public void setSize(int x, int y) {
-        this.xSize = x;
-        this.ySize = y;
+    public void setDimension(int x, int y) {
+        this.xPosition = x;
+        this.yPosition = y;
     }
 
     /**
      * Returns the grid cell at given array coordinate
      *
-     * @param x
-     * @param y
+     * @param x x index of the cell
+     * @param y y index of the cell
      */
     public Cell getCellAt(int x, int y) {
         return grid[x][y];
@@ -70,68 +84,7 @@ public class Grid {
     }
 
     /**
-     * Enlarges the grid so that its width will be less or equal to the
-     * parameter width
-     *
-     * If given width is less than the grid's current width, this method does
-     * nothing.
-     *
-     * @param width Desired maximum width of the grid.
-     */
-    public void fitToWidth(int width) {
-        int xRightmost =
-                grid[grid.length - 1][grid[0].length - 1].getX();
-        if (width > xRightmost) {
-            zoomGrid(greatestCommonFactor(xRightmost, width));
-        }
-    }
-
-    /**
-     * Enlarges the grid so that its height will be less or equal to the
-     * parameter height
-     *
-     * If given height is less than the grid's current height, this method does
-     * nothing.
-     *
-     * @param width Desired maximum height of the grid.
-     */
-    public void fitToHeight(int height) {
-        int yBottom =
-                grid[0][grid[0].length - 1].getY();
-        if (height > yBottom) {
-            zoomGrid(greatestCommonFactor(yBottom, height));
-        }
-    }
-
-    /**
-     * Enlarges the grid so that its width and height will be less or equal to
-     * the parameter size.
-     *
-     * Resulting grid size will not exceed either of the parameter values.
-     *
-     * If given size is less than the grid's current size, this method does
-     * nothing.
-     *
-     * @param width Desired maximum width of the grid.
-     * @param height Desired maximum height of the grid.
-     */
-    public void fitToSize(int width, int height) {
-        int xRightmost =
-                grid[grid.length - 1][grid[0].length - 1].getX();
-        int yBottom =
-                grid[0][grid[0].length - 1].getY();
-        if (width > xRightmost && height > yBottom) {
-            int zoomFactor = Math.min(greatestCommonFactor(xRightmost, width),
-                    greatestCommonFactor(yBottom, height));
-
-            zoomGrid(zoomFactor);
-        }
-    }
-
-    /**
      * Resizes the cells to be certain size, disregarding any size constraints.
-     *
-     * If width is an odd number, it will be scaled to the next even number.
      *
      * @param width Desired cell width
      */
@@ -140,28 +93,6 @@ public class Grid {
             return;
         }
         zoomGrid(width/4);
-    }
-
-    /**
-     * Finds out how many times a can be multiplied so that a is less than or
-     * equal to b.
-     *
-     * In other words, finds i for
-     *
-     * a * i ≤ b
-     *
-     * @param a
-     * @param b
-     * @return s
-     */
-    private int greatestCommonFactor(int a, int b) {
-        int a1 = 0;
-        int i = 1;
-        while (a1 <= b) {
-            i += 1;
-            a1 = a * i;
-        }
-        return i - 1;
     }
 
     /**
@@ -198,7 +129,7 @@ public class Grid {
     }
 
     /**
-     * Returns the Cell at given coordinates.
+     * Returns the Cell at given grid coordinates.
      *
      * @param x
      * @param y

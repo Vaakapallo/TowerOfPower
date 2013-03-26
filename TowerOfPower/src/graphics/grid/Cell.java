@@ -9,32 +9,39 @@ import logic.level.CellContent;
 import randomGenerators.RandomInteger;
 
 /**
+ * A class that is used to contain information related to a single cell of which
+ * grids consist.
  *
  * @author 41407
  */
 public class Cell extends Location implements Comparable<Cell> {
 
+    /**
+     * Should Cell be drawn?
+     */
     private boolean visible;
-    private boolean accessible;
+    /**
+     * What, if anything, cell contains
+     */
     private CellContent content;
+    /**
+     * Cell's height
+     */
     private int height;
-    private int tileVariant;
-
-    public int getTileVariant() {
-        return tileVariant;
-    }
+    /**
+     * Tile variant, which is a random number
+     */
+    private final int tileVariant;
 
     public Cell(int x, int y) {
         super(x, y);
         this.visible = true;
-        this.accessible = false;
         this.content = null;
         this.tileVariant = RandomInteger.getRandom();
     }
 
     public void setVisibility(boolean visible) {
         this.visible = visible;
-        this.accessible = false;
     }
 
     public boolean isVisible() {
@@ -60,5 +67,9 @@ public class Cell extends Location implements Comparable<Cell> {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getTileVariant() {
+        return tileVariant;
     }
 }

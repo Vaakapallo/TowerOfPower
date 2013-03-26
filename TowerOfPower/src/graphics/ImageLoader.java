@@ -28,10 +28,6 @@ public class ImageLoader {
         this.i = loadImage(path);
     }
 
-    public Image getImage() {
-        return i;
-    }
-
     /**
      * Attempts to load image file from path. If file does not exist, returns
      * null and system-outs an error line.
@@ -50,5 +46,9 @@ public class ImageLoader {
             System.out.println(" NOT FOUND");
             return null;
         }
+    }
+
+    public Image getImage() {
+        return i;
     }
 }
